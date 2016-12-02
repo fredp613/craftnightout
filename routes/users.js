@@ -2,15 +2,15 @@
 
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
-import User from './user';
-import PasswordRecovery from './passwordrecovery';
-import { sendEmail } from '../email';
-import authenticated from './authenticate';
+import User from '../models/user';
+import PasswordRecovery from '../models/passwordrecovery';
+import { sendEmail } from '../helpers/email';
+import authenticated from '../helpers/authenticate';
 
 export default function (router, mongoose,customOpenPaths,rootPath) {
       
-    router.use(authenticated(mongoose, customOpenPaths));
-	
+    router.use(authenticated(mongoose, customOpenPaths, rootPath));
+    //router.use(function() {console.log("my middleware --------------")});	
 	//let User = UserModel(mongoose);
 	//let User = UserModel();
 	//let PasswordRecovery = PasswordRecoveryModel(mongoose);
@@ -25,7 +25,8 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	const saltRounds = 10;
 
 	router.get(loginRoute, (req, res) => {
-		res.render('login', {title: "Login Page", csrfToken: req.csrfToken()});
+		//res.render('login', {title: "Login Page", csrfToken: req.csrfToken()});
+		res.render('users/login', {title: "Login Page"});
 	});
 
 	router.post(loginRoute, (req, res) => {
@@ -80,7 +81,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									console.log("we should be good");
 									res.cookie('Token', token,
 									 {maxAge: 3600000, httpOnly: true});
-									res.redirect("/authentication/home")
+									res.redirect("/admin")
 								}
 							})
 						}						
@@ -167,7 +168,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									 {maxAge: 3600000, httpOnly: true});
 									sendEmail("fredp613@gmail.com", 
 										"Registered", "Thank you for registering")							
-									res.redirect('/authentication/home');
+									res.redirect('/admin');
 								}
 							})
 
@@ -308,7 +309,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									csrfToken: req.csrfToken(),
 								})
 							}
-							res.redirect('/authentication/home');
+							res.redirect('/admin');
 						});
 					})
 				});		

@@ -12,9 +12,9 @@ var app = express();
 import csrf from 'csurf';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import user_controller from './routes/user_controller';
-
-
+import user_controller from './routes/users';
+import admin from './routes/admin';
+import 'babel-polyfill'
 
 let csrfProtection = csrf({cookie: true});
 let parseForm = bodyParser.urlencoded({extended: false});
@@ -50,12 +50,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'vendor')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-let customOpenPaths = ["/"]
+let customOpenPaths = ["/", "/events"]
 
+
+
+user_controller(app, mongoose, customOpenPaths, "/users");
 app.use('/', routes);
 app.use('/events', events);
+app.use('/admin', admin);
 
-user_controller(app, mongoose, customOpenPaths,null);
 
 
 /// catch 404 and forwarding to error handler

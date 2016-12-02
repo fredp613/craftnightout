@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "nodejs ./bin/www"
+    "start_old": "nodejs ./bin/www",
+    "start": "nodejs ./start.js"
   },
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
     "bcrypt": "^0.8.7",
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
@@ -23,5 +25,8 @@
     "morgan": "~1.0.0",
     "nodemailer": "^2.6.4",
     "static-favicon": "~1.0.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.16.0"
   }
 }

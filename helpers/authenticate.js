@@ -2,20 +2,22 @@
 
 import jwt from "jsonwebtoken";
 
-export default function isAuthenticated(mongoose, customOpenPaths) { 
+export default function isAuthenticated(mongoose, customOpenPaths, rootPath) { 
 
 	return function(req, res, next) {
-	
-	 	let userAuthOpenPaths = ["/login",
-						"/recover", 
-						"/register", 
-						"/recoverconfirm"]
+	 	let userAuthOpenPaths = [rootPath + "/login",
+						rootPath + "/recover", 
+						rootPath + "/register", 
+						rootPath + "/recoverconfirm"]
 		let openPaths = userAuthOpenPaths.concat(customOpenPaths);
-		console.log(openPaths);
+		console.log(openPaths)
+		
 		if (!req.cookies.Token && !(openPaths.includes(req.path))) {
 			req.isAuthenticated = false;
-			res.redirect('/login');
-		} else {
+			res.redirect('/users/login');
+
+ 		} else {
+
 			//get current user, validate token (ensure that it exists and is valid)
 			if (req.cookies.Token !== undefined) {
 				const token = req.cookies.Token;
@@ -31,7 +33,7 @@ export default function isAuthenticated(mongoose, customOpenPaths) {
 					console.log("is not auth");
 					req.isAuthenticated = false;
 					if (!openPaths.includes(req.path)){
-						res.redirect('/login');
+						res.redirect('/users/login');
 					} else {
 						next();
 					}
