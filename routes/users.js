@@ -25,8 +25,8 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	const saltRounds = 10;
 
 	router.get(loginRoute, (req, res) => {
-		//res.render('login', {title: "Login Page", csrfToken: req.csrfToken()});
-		res.render('users/login', {title: "Login Page"});
+		res.render('users/login', {title: "Login Page", csrfToken: req.csrfToken()});
+		//res.render('users/login', {title: "Login Page"});
 	});
 
 	router.post(loginRoute, (req, res) => {
@@ -40,17 +40,17 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 			let IP = req.headers['x-forwarded-for']; 
 			if (err) {
 				errorMessage = err.Message;
-				res.render('login', {error: errorMessage});
+				res.render('users/login', {error: errorMessage});
 			}
 			if (!user) {
 				errorMessage = "Invalid email";
-				res.render('login', {error: errorMessage});
+				res.render('users/login', {error: errorMessage});
 			} else {
 				bcrypt.compare(param_password, user.password, function(err, compared) {
 				  // res == false
 					console.log(param_password, user.password, compared)
 				if (compared === false || compared === undefined) {
-					  res.render('login',{success: false,error:"Password incorrect", csrfToken: req.csrfToken()})
+					  res.render('users/login',{success: false,error:"Password incorrect", csrfToken: req.csrfToken()})
 				} else {
 					if (user.IPs) { 
 						console.log(user.IPs.indexOf(IP));
@@ -64,7 +64,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 					user.save((err)=>{
 						if (err) { 
 						  console.log("error ${0}", err);
-						  res.render('login',{
+						  res.render('users/login',{
 							success: false,
 							error: "Problem issuing token",
 							csrfToken: req.csrfToken(),
@@ -72,7 +72,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 						} else {
 							generateJWT(user,(token, error) => {
 								if (error !== null ) {
-								  res.render('login',{
+								  res.render('users/login',{
 									success: false,
 									error: "Problem issuing token",
 									token: null,
@@ -106,7 +106,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 		}); 
 	}
 	router.get(registerRoute, (req, res)=> {
-		res.render('register', {title:"register page", csrfToken: req.csrfToken()})
+		res.render('users/register', {title:"register page", csrfToken: req.csrfToken()})
 	});
 
 	router.post(registerRoute, (req, res, next) => {
@@ -118,14 +118,14 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	  const IP = req.headers['x-forwarded-for']; 
 	  
 	  if (password !== passwordConfirm) {
-		res.render('register', {
+		res.render('users/register', {
 		  success:false,
 		  message: "Passwords don't match",      
 		})
 	  } else {
 		bcrypt.hash(password, saltRounds, function(err, hash) {		   
 		  if (err) {
-			return res.render('register',{
+			return res.render('users/register',{
 					success: false,
 					message: "Something went wrong",
 					token: null,
@@ -152,12 +152,12 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 						errorMessage = "there was an error try again";
 						if (err.code === 11000) {
 							errorMessage = "This email already exists, try logging in";
-							res.render('register', {error: errorMessage});
+							res.render('users/register', {error: errorMessage});
 						}
 					} else {						
 						generateJWT(newUser,(token, error) => {
 								if (error !== null ) {
-								  res.render('register',{
+								  res.render('users/register',{
 									success: false,
 									error: "Problem issuing token",
 									token: null,
@@ -175,7 +175,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 					}
 				 });
 				} else {
-					res.render('register',{
+					res.render('users/register',{
 						  success: false,
 						  message: "User already exists",
 						  token: null,
@@ -188,7 +188,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 
 	router.get(logoutRoute, (req, res, next) => {
 	   res.clearCookie("Token");
-		   res.redirect('/authentication/login');
+		   res.redirect('/users/login');
 	})
 
 	router.delete('/authentication/delete', (req, res, next)=> {
@@ -212,7 +212,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 
 	router.get(recoverRoute, (req, res, next)=>{
 	    res.clearCookie("Token");
-		res.render('recover', {Title: "Recover Password", csrfToken: req.csrfToken()});
+		res.render('users/recover', {Title: "Recover Password", csrfToken: req.csrfToken()});
 	});
 
 	router.post(recoverRoute, (req, res, next) => {
@@ -230,16 +230,16 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 			let errorMessage = "";
 			if (err) {
 				errorMessage = err.Message;
-				res.render('recover', {error: errorMessage, csrfToken: req.csrfToken()});
+				res.render('users/recover', {error: errorMessage, csrfToken: req.csrfToken()});
 			}
 			if (!user) {
 			    errorMessage = "this email does not exist, please try again";
-				res.render('recover', {error: errorMessage, csrfToken: req.csrfToken()});
+				res.render('users/recover', {error: errorMessage, csrfToken: req.csrfToken()});
 			}
 			if (user) {
 				PasswordRecovery.remove({email: requestingEmail}, (err)=>{
 					if (err) {
-						res.render('recover',
+						res.render('users/recover',
 						 {error: "Something went wrong", csrfToken: req.csrfToken()});
 					}
 					let newPasswordRecovery = new PasswordRecovery({
@@ -248,7 +248,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 					});
 					newPasswordRecovery.save((err)=>{
 						if (err) {
-							res.render('recover', 
+							res.render('users/recover', 
 							{error: "something went wrong try again later", 
 								csrfToken: req.csrfToken()});
 						} else {
@@ -256,7 +256,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 								"Password recovery",
 								"click on the following link to reset your password:" 
 								+ urlForRecovery); 
-							res.render('recover', 
+							res.render('users/recover', 
 								{status: "success", csrfToken: req.csrfToken()});	
 						}	
 					});	
@@ -267,7 +267,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 
 	router.get(recoverConfirmRoute, (req, res, next) => {
 		console.log(req.query.email + "-" + req.query.safestring);
-		res.render('recoverconfirm', {title: "Confirm temporary password",
+		res.render('users/recoverconfirm', {title: "Confirm temporary password",
 			email: req.query.email, csrfToken: req.csrfToken()});
 	});
 	  
@@ -278,16 +278,16 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	  let paramEmail = req.body.email
 	  
 	  if (paramPwd !== paramPwdConfirm) {
-		 return res.render('recoverconfirm', {title: "Confirm temporary password", 
+		 return res.render('users/recoverconfirm', {title: "Confirm temporary password", 
 			error:"passwords don't match, try again", csrfToken: req.csrfToken()});
 	  }
 	  PasswordRecovery.findOne({email: paramEmail}, (err, pr) => {
 			if (err) {
-				return res.render('recoverconfirm', {title: "Confirm temporary password", 
+				return res.render('users/recoverconfirm', {title: "Confirm temporary password", 
 				error: err.Message, csrfToken: req.csrfToken()});
 		    }
 			if (!pr) {
-				return res.render('recoverconfirm', 
+				return res.render('users/recoverconfirm', 
 				{title: "Confirm temporary password", error:
 				"somethign went wrong - not found", csrfToken: req.csrfToken()});
 			}
@@ -299,12 +299,12 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 							{error: "something went wrong", csrfToken: req.csrfToken()});
 						}
 						if (!user) {
-						  return res.render('recoverconfirm', 
+						  return res.render('users/recoverconfirm', 
 							{error: "user not found", csrfToken: req.csrfToken()});
 						}
 						User.update(user, {password: hash}, null, (err)=>{
 							if (err) {
-								return res.render('recoverconfirm', {
+								return res.render('users/recoverconfirm', {
 									error: err.Message,
 									csrfToken: req.csrfToken(),
 								})
