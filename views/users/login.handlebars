@@ -5,6 +5,7 @@
   		<strong>{{error}}</strong>
 	</p>  
   {{/if}}
+  <input type="hidden" name="_csrf" value={{csrfToken}} />
 
   <input type="text" name='email' id="txtLogin" placeholder="email" required=true></input>
   <input type="password" name='password' id="txtPassword" placeholder="password" required=true></input>

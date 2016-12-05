@@ -13,16 +13,18 @@
                 <div class="col-md-12">
                     <div class="container-fluid">
                         <div class="row">
-
-						{{#each events}}
-                            <div class="col-md-6">
-                               <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
-                                    <h3>{{title}}</h3>
-                                    <p class="text-muted">{{description}}</p>
-                                </div>
-                            </div>
-						{{/each}}
+						{{#if events}}
+							{{#each events}}
+								<div class="col-md-6">
+								   <div class="feature-item">
+										<i class="icon-present text-primary"></i>
+										<h3>{{title}}</h3>
+										<p class="text-muted">{{description}}</p>
+									</div>
+								<a href="/events/{{_id}}">>Show Details</a>
+								</div>
+							{{/each}}
+						{{/if}}
                         </div>
                 </div>
             </div>

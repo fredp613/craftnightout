@@ -10,14 +10,11 @@ export default function isAuthenticated(mongoose, customOpenPaths, rootPath) {
 						rootPath + "/register", 
 						rootPath + "/recoverconfirm"]
 		let openPaths = userAuthOpenPaths.concat(customOpenPaths);
-		console.log(openPaths)
-		
-		if (!req.cookies.Token && !(openPaths.includes(req.path))) {
+		if (!req.cookies.Token && !wildcardSearchPath(openPaths, req.path)){
 			req.isAuthenticated = false;
 			res.redirect('/users/login');
 
  		} else {
-
 			//get current user, validate token (ensure that it exists and is valid)
 			if (req.cookies.Token !== undefined) {
 				const token = req.cookies.Token;
@@ -30,9 +27,8 @@ export default function isAuthenticated(mongoose, customOpenPaths, rootPath) {
 					req.isAuthenticated = true;
 					next();
 				} else {				
-					console.log("is not auth");
 					req.isAuthenticated = false;
-					if (!openPaths.includes(req.path)){
+					if (!wildcardSearchPath(openPaths, req.path)) {	
 						res.redirect('/users/login');
 					} else {
 						next();
@@ -43,5 +39,16 @@ export default function isAuthenticated(mongoose, customOpenPaths, rootPath) {
 				next();
 			}						
       }
+	}
+	function wildcardSearchPath(openPaths, requestedPath) {
+		for (var i=0;i<openPaths.length;i++) {
+			var cleanOpenPath = openPaths[i].replace("/","");
+			var cleanRequestedPath = requestedPath.replace("/","");
+			if (cleanOpenPath[i].includes(cleanRequestedPath) || cleanRequestedPath.includes(cleanOpenPath)) {
+				return true;
+			}
+		}
+	
+		return false;
 	}
 }

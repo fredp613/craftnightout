@@ -13,13 +13,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#download">Book Event</a>
+                        <a class="page-scroll" href="#events">Book Event</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#features">Organize Event</a>
+                        <a class="page-scroll" href="#organize">Organize Event</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Gift Certificates</a>
+                        <a class="page-scroll" href="#contact">Social Media</a>
                     </li>
                 </ul>
             </div>
@@ -31,12 +31,13 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1>Craft Night Out - Reserve a spot today</h1>
-                            <a href="#download" class="btn btn-outline btn-xl page-scroll">Book event</a>
-                            <a href="#download" class="btn btn-outline btn-xl page-scroll">Organization event</a>
+                            <a href="#events" class="btn btn-outline btn-xl page-scroll">Book event</a>
+                            <a href="#organize" class="btn btn-outline btn-xl page-scroll">Organize event</a>
+                            <a href="#contact" class="btn btn-outline btn-xl page-scroll">Social Media</a>
                         </div>
                     </div>
                 </div>
@@ -57,22 +58,7 @@
         </div>
     </header>
 
-    <section id="download" class="download bg-primary text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
-                    <div class="badges">
-                        <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
-                        <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="features" class="features">
+    <section id="events" class="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -92,8 +78,8 @@
                             <div class="col-md-6">
                                <div class="feature-item">
                                     <i class="icon-present text-primary"></i>
-                                    <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                                    <h3>{{title}}</h3>
+                                    <p class="text-muted">{{description}}</p>
                                 </div>
                             </div>
 						{{/each}}
@@ -101,16 +87,21 @@
                 </div>
             </div>
     </section>
-
-    <section class="cta">
-        <div class="cta-content">
-            <div class="container">
-                <h2>Stop waiting.<br>Start building.</h2>
-                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+    
+	<section id="organize" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Use our servies to organize and event !</h2>
+                    <p>Click here to ..</p>
+                    <div class="badges">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="overlay"></div>
     </section>
+
+
 
     <section id="contact" class="contact bg-primary">
         <div class="container">
@@ -129,20 +120,4 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
 

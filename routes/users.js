@@ -25,7 +25,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	const saltRounds = 10;
 
 	router.get(loginRoute, (req, res) => {
-		res.render('users/login', {title: "Login Page", csrfToken: req.csrfToken()});
+		res.render('users/login', {layout: "main.handlebars", title: "Login Page", csrfToken: req.csrfToken()});
 		//res.render('users/login', {title: "Login Page"});
 	});
 
@@ -81,7 +81,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									console.log("we should be good");
 									res.cookie('Token', token,
 									 {maxAge: 3600000, httpOnly: true});
-									res.redirect("/admin")
+									res.redirect("/admins")
 								}
 							})
 						}						
@@ -168,7 +168,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									 {maxAge: 3600000, httpOnly: true});
 									sendEmail("fredp613@gmail.com", 
 										"Registered", "Thank you for registering")							
-									res.redirect('/admin');
+									res.redirect('/admins');
 								}
 							})
 
@@ -309,7 +309,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 									csrfToken: req.csrfToken(),
 								})
 							}
-							res.redirect('/admin');
+							res.redirect('/admins');
 						});
 					})
 				});		

@@ -224,6 +224,11 @@ section {
 section h2 {
   font-size: 50px;
 }
+
+section.organize {
+
+}
+
 section.download {
   padding: 150px 0;
   position: relative;
@@ -331,6 +336,7 @@ section.cta .overlay {
 }
 section.contact {
   text-align: center;
+  background-color: #b3b3b3;
 }
 section.contact h2 {
   margin-top: 0;
@@ -351,8 +357,10 @@ section.contact ul.list-social li a {
   border-radius: 100%;
   color: white;
 }
+
+
 section.contact ul.list-social li.social-twitter a {
-  background-color: #1da1f2;
+  background-color: #b3b3b3;
 }
 section.contact ul.list-social li.social-twitter a:hover {
   background-color: #0d95e8;
@@ -369,6 +377,16 @@ section.contact ul.list-social li.social-google-plus a {
 section.contact ul.list-social li.social-google-plus a:hover {
   background-color: #d73925;
 }
+
+footer.other {
+  bottom: 0;
+  width: 100%;
+  height:80px;
+  position:absolute;
+
+}
+
+
 footer {
   background-color: #222222;
   padding: 25px 0;
@@ -394,8 +412,6 @@ footer ul li a.active {
 }
 .bg-primary {
   background: #fdcc52;
-  background: -webkit-linear-gradient(#fdcc52, #fdc539);
-  background: linear-gradient(#fdcc52, #fdc539);
 }
 .text-primary {
   color: #fdcc52;

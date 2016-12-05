@@ -1,0 +1,7 @@
+<strong>New Event</strong>
+<form method="post" action="/admins/evts/create"> 
+  <input type="hidden" name="_csrf" value={{csrfToken}} />
+  <input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input>
+  <textarea name="description" class="form-control" id="txtDescription" rows="5"></textarea>
+  <input type="submit" id="submit" value='Publish'></input>
+</form>

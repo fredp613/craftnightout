@@ -4,17 +4,21 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+import 'babel-polyfill'
 
-var routes = require('./routes/index');
-var events = require('./routes/events');
 //var exphbs = require('express-handlebars')
-var app = express();
 import csrf from 'csurf';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
 import user_controller from './routes/users';
-import admin from './routes/admin';
-import 'babel-polyfill'
+import admins from './routes/admins';
+import events from './routes/events';
+var home = require('./routes/index');
+//var events = require('./routes/events');
+
+
+var app = express();
 
 let csrfProtection = csrf({cookie: true});
 let parseForm = bodyParser.urlencoded({extended: false});
@@ -50,15 +54,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'vendor')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(csrfProtection);
-let customOpenPaths = ["/", "/events"]
 
+let customOpenPaths = ["events"]
 
 
 user_controller(app, mongoose, customOpenPaths, "/users");
-app.use('/', routes);
+app.use('/',home);
 app.use('/events', events);
-app.use('/admin', admin);
-
+app.use('/admins', admins);
 
 
 /// catch 404 and forwarding to error handler
