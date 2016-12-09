@@ -25,7 +25,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	const saltRounds = 10;
 
 	router.get(loginRoute, (req, res) => {
-		res.render('users/login', {layout: "main.handlebars", title: "Login Page", csrfToken: req.csrfToken()});
+		res.render('users/login', {layout: "admin.handlebars", title: "Login Page", csrfToken: req.csrfToken()});
 		//res.render('users/login', {title: "Login Page"});
 	});
 
@@ -106,7 +106,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 		}); 
 	}
 	router.get(registerRoute, (req, res)=> {
-		res.render('users/register', {title:"register page", csrfToken: req.csrfToken()})
+		res.render('users/register', {title:"register page",layout:"admin.handlebars", csrfToken: req.csrfToken()})
 	});
 
 	router.post(registerRoute, (req, res, next) => {
@@ -212,7 +212,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 
 	router.get(recoverRoute, (req, res, next)=>{
 	    res.clearCookie("Token");
-		res.render('users/recover', {Title: "Recover Password", csrfToken: req.csrfToken()});
+		res.render('users/recover', {Title: "Recover Password", layout:"admin.handlebars", csrfToken: req.csrfToken()});
 	});
 
 	router.post(recoverRoute, (req, res, next) => {
@@ -230,17 +230,17 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 			let errorMessage = "";
 			if (err) {
 				errorMessage = err.Message;
-				res.render('users/recover', {error: errorMessage, csrfToken: req.csrfToken()});
+				res.render('users/recover', {layout:"admin.handlebars",error: errorMessage, csrfToken: req.csrfToken()});
 			}
 			if (!user) {
 			    errorMessage = "this email does not exist, please try again";
-				res.render('users/recover', {error: errorMessage, csrfToken: req.csrfToken()});
+				res.render('users/recover', {layout:"admin.handlebars",error: errorMessage, csrfToken: req.csrfToken()});
 			}
 			if (user) {
 				PasswordRecovery.remove({email: requestingEmail}, (err)=>{
 					if (err) {
 						res.render('users/recover',
-						 {error: "Something went wrong", csrfToken: req.csrfToken()});
+						 {error: "Something went wrong", layout:"admin.handlebars",csrfToken: req.csrfToken()});
 					}
 					let newPasswordRecovery = new PasswordRecovery({
 							email: requestingEmail,
@@ -249,7 +249,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 					newPasswordRecovery.save((err)=>{
 						if (err) {
 							res.render('users/recover', 
-							{error: "something went wrong try again later", 
+							{layout:"admin.handlebars", error: "something went wrong try again later", 
 								csrfToken: req.csrfToken()});
 						} else {
 							sendEmail("fredp613@gmail.com",
@@ -257,7 +257,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 								"click on the following link to reset your password:" 
 								+ urlForRecovery); 
 							res.render('users/recover', 
-								{status: "success", csrfToken: req.csrfToken()});	
+								{status: "success",layout:"admin.handlebars", csrfToken: req.csrfToken()});	
 						}	
 					});	
 				});
@@ -268,7 +268,7 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	router.get(recoverConfirmRoute, (req, res, next) => {
 		console.log(req.query.email + "-" + req.query.safestring);
 		res.render('users/recoverconfirm', {title: "Confirm temporary password",
-			email: req.query.email, csrfToken: req.csrfToken()});
+			email: req.query.email, csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 	});
 	  
 	router.post(recoverConfirmRoute, (req, res, next) => {
@@ -279,34 +279,35 @@ export default function (router, mongoose,customOpenPaths,rootPath) {
 	  
 	  if (paramPwd !== paramPwdConfirm) {
 		 return res.render('users/recoverconfirm', {title: "Confirm temporary password", 
-			error:"passwords don't match, try again", csrfToken: req.csrfToken()});
+			error:"passwords don't match, try again", csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 	  }
 	  PasswordRecovery.findOne({email: paramEmail}, (err, pr) => {
 			if (err) {
 				return res.render('users/recoverconfirm', {title: "Confirm temporary password", 
-				error: err.Message, csrfToken: req.csrfToken()});
+				error: err.Message, csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 		    }
 			if (!pr) {
 				return res.render('users/recoverconfirm', 
 				{title: "Confirm temporary password", error:
-				"somethign went wrong - not found", csrfToken: req.csrfToken()});
+				"somethign went wrong - not found", csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 			}
 			if (pr) {
 				bcrypt.hash(paramPwd, saltRounds, function(err, hash) {	
 					User.findOne({email: paramEmail}, (err, user)=>{
 						if (err) {
 							return res.render('recoverconfrim', 
-							{error: "something went wrong", csrfToken: req.csrfToken()});
+							{error: "something went wrong", csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 						}
 						if (!user) {
 						  return res.render('users/recoverconfirm', 
-							{error: "user not found", csrfToken: req.csrfToken()});
+							{error: "user not found", csrfToken: req.csrfToken(), layout:"admin.handlebars"});
 						}
 						User.update(user, {password: hash}, null, (err)=>{
 							if (err) {
 								return res.render('users/recoverconfirm', {
 									error: err.Message,
 									csrfToken: req.csrfToken(),
+									layout: "admin.handlebars"
 								})
 							}
 							res.redirect('/admins');
