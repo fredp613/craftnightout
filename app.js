@@ -10,7 +10,7 @@ import 'babel-polyfill'
 import csrf from 'csurf';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
+import cors from 'cors';
 import user_controller from './routes/users';
 import admins from './routes/admins';
 import events from './routes/events';
@@ -45,7 +45,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, "views"))
 
-
+app.use(cors());
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -42,7 +42,7 @@ router.post('/evts/create', (req, res) => {
 });
 
 //UPdate event
-router.post('/evts/edit/', (req, res) => {
+router.post('/evts/update', (req, res) => {
 	
 	const craftevent = req.body.craftevent;
 	craftevent.findOne({}, (err, doc) => {

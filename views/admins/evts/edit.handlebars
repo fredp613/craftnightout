@@ -1,1 +1,11 @@
 <strong>Edit Event</strong>
+
+<form method="post" action="/admins/evts/update"> 
+  <input type="hidden" name="_csrf" value={{csrfToken}} />
+  <input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true>{{craftevent.title}}</input>
+  <input type="text" class="form-control" name="title" id="txtLocation" placeholder="Event Location Name" required=true>{{craftevent.locationName}}</input>
+  <input type="text" class="form-control" name="title" id="txtAddress" placeholder="Event Address" required=true>{{craftevent.address}}</input>
+  <input type="date" class="form-control" name="title" id="txtDate" placeholder="Event Date" required=true>{{craftevent.date}}</input>
+  <textarea name="description" class="form-control" id="txtDescription" rows="5">{{craftevent.description}}</textarea>
+  <input type="submit" id="submit" value='Update'></input>
+</form>

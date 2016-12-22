@@ -8,6 +8,8 @@ let Schema = mongoose.Schema;
 const CraftEvent = new mongoose.Schema({
 	title: String,
 	description: String,
+	locationName: String,
+	address: String,
 	date: Date,
 	totalTickets: String
 });
