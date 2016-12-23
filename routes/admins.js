@@ -28,7 +28,6 @@ router.post('/evts/create', (req, res) => {
 	console.log(req.body)
 	delete req.body["_csrf"];
 	let craftevent = new CraftEvent(req.body);	
-	console.log(craftevent.title);
 	craftevent.save((err)=>{
 		if (err) {
 			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars", csrfToken: csrfToken()})

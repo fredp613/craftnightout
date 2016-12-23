@@ -19,7 +19,7 @@ var home = require('./routes/index');
 
 
 var app = express();
-
+dotenv.config();
 let csrfProtection = csrf({cookie: true});
 let parseForm = bodyParser.urlencoded({extended: false});
 

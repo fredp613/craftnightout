@@ -4,26 +4,33 @@
 let express = require('express');
 let router = express.Router();
 
+import { sendEmail } from '../helpers/email';
 import Subscriber from '../models/subscriber';
 
-router.get('/new', (req, res) => {
-	res.render('subscribers/new', { title: 'New Subscriber', layout: 'other.handlebars', csrfToken: req.csrfToken()});
-});
-
-router.post('/create', (req, res) => {
+router.get('/create/:email', (req, res) => {
 	
-	console.log(req.body)
-	delete req.body["_csrf"];
-	console.log(req.body)
-	let subscriber = new Subscriber(req.body);
-	subscriber.createdOn = new Date();
-	subscriber.save((err)=>{
-		if (err) {
-			res.render('subscribers/new', { title: 'New Subscriber', layout: 'other.handlebars', message: "Something went wrong try again", error: true, csrfToken: req.csrfToken()});
-		} else {
-			res.render('subscribers/new', { title: 'New Subscriber', layout: 'other.handlebars', message: "Thank you for subscribing!", error: false});
-		}
-	});
+    Subscriber.findOne({"email":req.params.email}, (err, doc)=>{
+      	if (err) {
+			return res.json({error: true, doc:null, message: "something went wrong please try again"});
+      	} else {
+      		if (doc === null || doc === undefined) {
+				let subscriber = new Subscriber({email: req.params.email});
+				subscriber.createdon = Date();
+				subscriber.save((err)=>{
+					if (err) {
+						return res.json({error: true, doc:null, message: "something went wrong please try again"});
+					} else {
+						sendEmail("fredp613@gmail.com", 
+							"Craft Night Out", "Thank you for registering to our mailing list!")							
+						return res.json({error:false, doc:subscriber, message: "Thank you! You will receive an email shortly"});	
+					}
+				});
+      		} else {
+				return res.json({error:false, doc:null, message: "You are already subscribed to our mailing list!"});	
+
+      		}
+      	}
+    }) 
 });
 
 

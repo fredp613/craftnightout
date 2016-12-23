@@ -151,11 +151,11 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background: url("../img/logo.jpg"), #000000;
+  background: url("../img/9.jpg");
   /* fallback for old browsers */
-  background: url("../img/logo.jpg"), -webkit-linear-gradient(to left, ##343538, #000000 );
+  /*background: url("../img/9.jpg"), -webkit-linear-gradient(to left, ##343538, #000000 );*/
   /* Chrome 10-25, Safari 5.1-6 */
-  background: url("../img/logo.jpg"), linear-gradient(to left, #343538, #000000);
+  /*background: url("../img/9.jpg"), linear-gradient(to left, #343538, #); */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }
