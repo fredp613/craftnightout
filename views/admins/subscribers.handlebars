@@ -1,0 +1,15 @@
+
+
+<div class="row">
+	<h1>Subscribers</h1>
+	{{#if subscribers}}
+	<a href="mailto:?bcc=
+		{{#each subscribers}}
+		 {{email}};
+		{{/each}}"<i class="fa fa-envelope"></i></a>
+		<hr>
+		{{#each subscribers}}
+			<strong>{{email}}</strong>
+		{{/each}}
+	{{/if}}
+</div>

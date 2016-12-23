@@ -4,7 +4,7 @@ let express = require('express');
 let router = express.Router();
 
 import CraftEvent from '../models/craftevent';
-
+import Subscriber from '../models/subscriber';
 
 
 /* GET ALL EVENTS - 20 per page. */
@@ -95,5 +95,21 @@ router.get('/evts/:id', (req, res) => {
   }) 
   
 });
+
+
+router.get('/subscribers', (req, res)=> {
+	Subscriber.find({}, (err, docs)=>{
+	res.render('admins/subscribers', { title: 'Subscribers Admin Area', subscribers: docs, layout: "admin.handlebars"});
+	})
+
+});
+
+
+
+
+
+
+
+
 
 module.exports = router;
