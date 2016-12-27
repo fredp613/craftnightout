@@ -8,6 +8,9 @@
 			if (data.error == false) {
 				$("#btnSubmit").attr("value","Subscribed!!");
 				$("#btnSubmit").attr("class","btn btn-primary");
+				$("#txtEmail").fadeOut();
+			} else {
+			 	//message to user somehow	
 			}
 		});
 
