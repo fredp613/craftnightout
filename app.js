@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, 'vendor')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(csrfProtection);
 
-let customOpenPaths = ["events", "subscribers"]
+let customOpenPaths = ["events"]
 
 
 user_controller(app, mongoose, customOpenPaths, "/users");

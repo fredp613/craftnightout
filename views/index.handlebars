@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#events">Reserve a spot</a>
+                        <a class="page-scroll" href="#events">Events</a>
                     </li>
 					<!--
 					<li>
@@ -34,19 +34,32 @@
     <header>
          <div class="container-fluid" style="background-color:rgba(0,0,0,0.7);">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-offset-4">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>Craft Night Out - Reserve a spot today!</h1>
-                            <a href="#events" class="btn btn-outline btn-xl page-scroll">Reserve your spot</a>
-                          <!--  <a href="#subscribe" class="btn btn-outline btn-xl page-scroll">Subscribe</a> -->
-                          <!--  <a href="#organize" class="btn btn-outline btn-xl page-scroll">Organize</a> -->
-                            <a href="#contact" class="btn btn-outline btn-xl page-scroll">Social Media</a>
+                            <h1 style="text-align:center">craftnightout.ca</h1>
+                            <h1 style="text-align:center">Coming soon!</h1>
+                            <h1 style="text-align:center">~ Ottawa, Ontario ~</h1>
+                            <a href="#events" class="btn btn-outline btn-xl page-scroll">Events</a>
+                            <a href="http://www.stampcraftlove.com" target="_blank" class="btn btn-outline btn-xl">Blog</a>
+                          <!--  <a href="#subscribe" class="btn btn-outline btn-xl page-scroll">subscribe</a> -->
+                          <!--  <a href="#organize" class="btn btn-outline btn-xl page-scroll">organize</a> -->
+                            <a href="#contact" class="btn btn-outline btn-xl page-scroll">Follow Along</a>
+							<hr>
+							<hr>
+							<hr>
+							<div class="row">	
+							  <div class="col-md-offset-2">	
+								<!-- <form id="frmSubscribe" action="/subcribers/create"  class="form-inline">
+									<input type="email" id="txtEmail" class="input-lg form-control" placeholder="enter email" required />
+									<input type="submit" id="btnSubmit" class="btn btn-lg btn-success" value="subscribe" />
+								</form>
+								-->
+							  </div>	
+							</div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </header>
@@ -58,17 +71,17 @@
                 <div class="col-md-12">
                     <div class="container-fluid">
                         <div class="row">
-						{{#if featuredEvents }}
+						{{#if featuredevents }}
 								<div class="row">
 									<div class="col-lg-12 text-center">
 										<div class="section-heading">
-											<h2>Upcomming Events. Register Now.</h2>
-											<p class="text-muted">Select an event below to view additional details</p>
+											<h2>upcomming events. register now.</h2>
+											<p class="text-muted">select an event below to view additional details</p>
 											<hr>
 										</div>
 									</div>
 								</div>
-							{{#each featuredEvents}}
+							{{#each featuredevents}}
 								<div class="col-md-6">
 								   <div class="feature-item">
 									   <a class="text-muted" href="/events/{{_id}}">
@@ -78,7 +91,7 @@
 											<p class="text-muted">{{description}}</p>
 									   </a>
 											<p class="text-muted">{{date}}</p>
-											<p class="text-muted">{{locationName}}</p>
+											<p class="text-muted">{{locationname}}</p>
 											<p class="text-muted">{{address}}</p>
 									</div>
 								</div>
@@ -87,12 +100,17 @@
 								<div class="row">
 									<div class="col-lg-12 text-center">
 										<div class="section-heading">
-											<h2>Coming soon!</h2>
-											<p class="text-muted">Please subscribe to our mailing list to get notified when new events are posted!</p>
-												<form id="frmSubscribe" action="/subcribers/create"  class="form-inline">
-													<input type="email" id="txtEmail" class="form-control" placeholder="Enter email" required />
-													<input type="submit" id="btnSubmit" class="btn btn-success" value="Subscribe" />
-												</form>
+											<h2>~ Events ~</h2>
+											<h1>coming soon!</h1>
+											<p class="text-muted">Please sign up to new events, fun news and all things craft!</p>
+											<div class="container">
+												<div class="row">
+													<div class="col-md-12">
+													<h3 class="col-md-5" style="text-align:right;">January 15 <br> January 26 <br> January 29</h3>
+													  <div style="height:100px"><a href="http://www.stampcraftlove.com/craft-night-out-.html" class="col-md-3 btn btn-primary" target="_blank" style="top:40%">Reserve your spot</a></div>
+													</div>
+												</div>
+											</div>
 											<hr>
 										</div>
 									</div>
@@ -111,13 +129,10 @@
                     <a href="mailto:fredp613@gmail.com?Subject=Craft%20Night%20Out%20Inquiry"><i class="fa fa-envelope"></i></a>
                 </li>
                 <li class="social-twitter">
-                    <a href="#"><i class="fa fa-rss"></i></a>
-                </li>
-                <li class="social-twitter">
-                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/craft.night.out/"><i class="fa fa-instagram"></i></a>
                 </li>
                 <li class="social-facebook">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.facebook.com/craftnightout.ca/"><i class="fa fa-facebook"></i></a>
                 </li>
             </ul>
         </div>

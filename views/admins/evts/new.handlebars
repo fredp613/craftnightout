@@ -10,11 +10,15 @@
 	  <input id="autocomplete" class="form-control" placeholder="Enter address" onFocus="geolocate()" type="text"></input>
 	</div>
 	<hr>
+	<input type="text" id="lat"></input>
+	<input type="text" id="long"></input>
     <input type="submit" class="btn btn-primary" id="submit" value='Publish'></input>
 </form>
 <hr>
 <div id="map" style="height:100%"></div>
 
+
+<!--
 <table id="address" style="display:none;">
   <tr>
 	<td class="label">Street address</td>
@@ -25,10 +29,6 @@
   </tr>
   <tr>
 	<td class="label">City</td>
-	<!-- Note: Selection of address components in this example is typical.
-		 You may need to adjust it for the locations relevant to your app. See
-		 https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-	-->
 	<td class="wideField" colspan="3"><input class="field" id="locality"
 		  disabled="true"></input></td>
   </tr>
@@ -46,7 +46,7 @@
 		  id="country" disabled="true"></input></td>
   </tr>
 </table>
-
+-->
     <script>
       // This example displays an address form, using the autocomplete feature
       // of the Google Places API to help users fill in the information.
@@ -101,6 +101,10 @@
             document.getElementById(addressType).value = val;
           }
         }
+			var lat = document.getElementById("lat");
+			var lon = document.getElementById("long");
+			lat.value = position.coords.latitude;
+			lon.value = position.coords.longitude;
       }
 
       // Bias the autocomplete object to the user's geographical location,
@@ -116,6 +120,10 @@
               center: geolocation,
               radius: position.coords.accuracy,
             });
+			var lat = document.getElementById("lat");
+			var lon = document.getElementById("long");
+			lat.value = position.coords.latitude;
+			lon.value = position.coords.longitude;
             autocomplete.setBounds(circle.getBounds());
           });
         }
