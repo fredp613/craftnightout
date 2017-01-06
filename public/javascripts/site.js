@@ -11,7 +11,6 @@
 			} else {
 				console.log("Already registered")
 				$("#btnSubmit").attr("value","Subscribed!!");
-				$("#btnSubmit").attr("class","btn btn-lg btn-primary col-md-8");
 				$("#txtEmail").fadeOut();
 			}
 		});
