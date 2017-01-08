@@ -14,7 +14,7 @@ import cors from 'cors';
 import user_controller from './routes/users';
 import admins from './routes/admins';
 import events from './routes/events';
-import subscribers from './routes/subscribers';
+import osubscribers from './routes/osubscribers';
 var home = require('./routes/index');
 
 
@@ -55,13 +55,13 @@ app.use(express.static(path.join(__dirname, 'vendor')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(csrfProtection);
 
-let customOpenPaths = ["events"]
+let customOpenPaths = ["events", "osubscribers"]
 
 
 user_controller(app, mongoose, customOpenPaths, "/users");
 app.use('/',home);
 app.use('/events', events);
-app.use('/subscribers', subscribers);
+app.use('/osubscribers', osubscribers);
 app.use('/admins', admins);
 
 

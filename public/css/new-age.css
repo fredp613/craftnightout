@@ -275,6 +275,10 @@ section.features .feature-item {
 section.features .device-container {
   margin-bottom: 100px;
 }
+header.header-main-content {
+  max-width: 300px;
+  margin: 0 auto;
+}
 @media (min-width: 992px) {
   section.features .device-container {
     margin-bottom: 0;

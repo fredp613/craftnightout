@@ -11,6 +11,8 @@ const CraftEvent = new mongoose.Schema({
 	locationName: String,
 	address: String,
 	date: Date,
-	totalTickets: String
+	totalTickets: String,
+	lat: Number,
+	lng: Number
 });
 export default mongoose.model('CraftEvent', CraftEvent);

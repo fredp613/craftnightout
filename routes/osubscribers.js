@@ -21,7 +21,7 @@ router.get('/create/:email', (req, res) => {
 						return res.json({error: true, doc:null, message: "something went wrong please try again"});
 					} else {
 						sendEmail("fredp613@gmail.com", 
-							"Craft Night Out", "Thank you for registering to our mailing list!")							
+							"Craft Night Out", "Thank you for registering to our mailing list! You will receive information on new events, fun news and other things crafty! Thanks for supporting local :)  Fay McConnell, Creator and Owner, Craft Night Out")							
 						return res.json({error:false, doc:subscriber, message: "Thank you! You will receive an email shortly"});	
 					}
 				});

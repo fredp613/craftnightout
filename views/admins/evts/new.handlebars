@@ -1,21 +1,28 @@
-<strong>New Event</strong>
-<hr>
-<form method="post" action="/admins/evts/create"> 
-    <input type="hidden" name="_csrf" value={{csrfToken}} />
-    <input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input>
-	<hr>
-    <textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription" rows="5"></textarea>
-	<hr>
-	<div id="locationField">
-	  <input id="autocomplete" class="form-control" placeholder="Enter address" onFocus="geolocate()" type="text"></input>
+<div class="row">
+	
+	<div class="col-sm-5">
+		<strong>New Event</strong>
+		<hr>
+		<form method="post" action="/admins/evts/create"> 
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input>
+		<hr>
+		<textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription" rows="5"></textarea>
+		<hr>
+		<div id="locationField">
+		<input id="autocomplete" id="txtLocation" class="form-control" placeholder="Enter address" onInput="toggleSubmit()"  onFocus="geolocate()" type="text"></input>
+		</div>
+		<hr>
+		<input type="text" name="lat" id="lat" style="display:none;"></input>
+		<input type="text" name="lng" id="long" style="display:none;"></input>
+		<input type="submit" disabled class="btn btn-primary" id="submit" value='Publish'></input>
+		</form>
+		<hr>
+
 	</div>
-	<hr>
-	<input type="text" id="lat"></input>
-	<input type="text" id="long"></input>
-    <input type="submit" class="btn btn-primary" id="submit" value='Publish'></input>
-</form>
-<hr>
-<div id="map" style="height:100%"></div>
+
+	<div id="map" class="col-sm-7" style="width:55%;height:300px"></div>
+</div>
 
 
 <!--
@@ -54,6 +61,9 @@
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+ 	  function toggleSubmit() {
+		document.getElementById("submit").setAttribute("disabled", "disabled");
+	  }
 
       var placeSearch, autocomplete;
       var componentForm = {
@@ -87,24 +97,22 @@
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
 
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
+        //for (var component in componentForm) {
+        //  document.getElementById(component).value = '';
+        //  document.getElementById(component).disabled = false;
+        //}
 
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-          }
-        }
-			var lat = document.getElementById("lat");
-			var lon = document.getElementById("long");
-			lat.value = position.coords.latitude;
-			lon.value = position.coords.longitude;
+        //for (var i = 0; i < place.address_components.length; i++) {
+        //  var addressType = place.address_components[i].types[0];
+        //  if (componentForm[addressType]) {
+        //    var val = place.address_components[i][componentForm[addressType]];
+        //    document.getElementById(addressType).value = val;
+        //  }
+        //}
+		console.log(place);
+		initMapWithParams(place);
       }
 
       // Bias the autocomplete object to the user's geographical location,
@@ -120,19 +128,82 @@
               center: geolocation,
               radius: position.coords.accuracy,
             });
-			var lat = document.getElementById("lat");
-			var lon = document.getElementById("long");
-			lat.value = position.coords.latitude;
-			lon.value = position.coords.longitude;
             autocomplete.setBounds(circle.getBounds());
           });
         }
 	}
+
+	function initMapWithParams(place) {
+		if (!(place.geometry.viewport)) {
+			return;
+		}
+	    var latitude = place.geometry.viewport.f.b || null;
+		var longitude = place.geometry.viewport.b.b || null;
+		var placeId = place.place_id || null;
+		document.getElementById("lat").value = latitude;
+		document.getElementById("long").value = longitude;
+		var map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: latitude, lng: longitude},
+			  zoom: 15
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: placeId
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+
+		document.getElementById("submit").removeAttribute("disabled");
+	}
+	 function initMap() {
+    
+	    var map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat:45.5375801 , lng: -76.35391579999998},
+			  zoom: 15
+        });
+		//var latLng = new google.maps.LatLng(-8.064903, -34.896872)
+        
+		var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: 'ChIJrxNRX7IFzkwR7RXdMeFRaoo'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+      }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete&initMap"
         async defer></script>
 
-
+<!--	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initMap">
+   </script> -->
 
 
 
