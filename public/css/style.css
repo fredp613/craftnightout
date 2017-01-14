@@ -11,3 +11,13 @@ html,body {
 a {
   color: #00B7FF;
 }
+.navbar-brand2 {
+    float: left;
+    height: 50px;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: #fdcc52;
+}

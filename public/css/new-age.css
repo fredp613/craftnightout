@@ -28,7 +28,7 @@ a {
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
   transition: all 0.25s;
-  color: #fdcc52;
+  color: black;
 }
 a:hover,
 a:focus {
@@ -112,7 +112,6 @@ p {
     border-color: transparent;
   }
   .navbar-default .navbar-header .navbar-brand {
-    color: rgba(255, 255, 255, 0.7);
   }
   .navbar-default .navbar-header .navbar-brand:hover,
   .navbar-default .navbar-header .navbar-brand:focus {
@@ -151,7 +150,6 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background: url("../img/7.jpg");
   /* fallback for old browsers */
   /*background: url("../img/9.jpg"), -webkit-linear-gradient(to left, ##343538, #000000 );*/
   /* Chrome 10-25, Safari 5.1-6 */
