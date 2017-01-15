@@ -8,8 +8,11 @@ html,body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+body {
+overflow-x: hidden;
+}
+.page-scroll a:hover {
+	color:black;
 }
 .navbar-brand2 {
     float: left;
@@ -20,4 +23,9 @@ a {
     font-weight: 200;
     letter-spacing: 1px;
     color: #fdcc52;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
 }

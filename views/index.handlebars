@@ -1,5 +1,5 @@
 
-    <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top" style="padding:10px;border:none;">
+    <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top" style="background-color:rgba(0,0,0,0.8);padding:10px;border:none;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -22,19 +22,19 @@
             </div>
         </div>
     </nav>
-
-	<div class="container-fluid">
-		<div class="row" >
-		<div  style="margin-top:10px;height:200px;background-color:white;">
-		</div>
+	<div class="row" style="margin-top:75px"> 
+		<div style="height:200px;padding:20px">
+			<div class="text-center">
+				<img src="../img/FB-Profile.jpg" style="opacity:0.8" height="200" width="200" >
+			</div>
 		</div>
 	</div>
-    <header>
-		 <nav id="headerNav" class="navbar navbar-brand2  navbar-inverse" style="border-color:white">
-			<div class="container-fluid" style="background-color:white;border-color:white;padding:0px;margin:0px">
-				<div class="row">
-					<div class="col-sm-offset-3">
-						<ul class="nav navbar-nav">
+
+    <header style="margin-left:20px;margin-right:20px">
+		 <nav id="headerNav" class="navbar navbar-brand2" style="margin:10,10,10,10;border-color:white">
+				<div class="row"style="background-color:white;border-color:white;padding:0px;margin:0px">
+					<div class="" style="text-align:center;">
+						<ul class="nav navbar-nav" style="display:inline-block;float:none;">
 							<li>
 								<a class="page-scroll" href="#events" style="font-size:27px">Upcoming Events</a>
 							</li>
@@ -53,36 +53,75 @@
 						</ul>
 					</div>
 				</div>
-			</div>
 		</nav>
-         <div class="container" >
-            <div class="row">
-                    <div class="header-content" style="background: url('../img/7.jpg');">
-                        <div class="text-align:center">
-						<div class="row">
-							<div class="col-sm-offset-4">
+            <div class="row" >
+				<div class="col-sm-8"  >
+					<div style="margin:5px;height:600px;background: url('../img/6.jpg');">
+					</div> 
+				</div>
+				<div class="col-sm-4" >
+					<div style="height:600px;">
+						<div class="row partRestaurants text-center">
+							<div class="col-lg-12">
+								<h2 style="color:black;">Participating Restaurants</h2>
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
+							</div>
+							<div class="col-lg-4 thumb" style="padding:10px">
+								<img src="http://placehold.it/150x150" class="center-block">
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-offset-4">
-							</div>
+						<div class="row social text-center">
+						<!-- <section id="contact" class="features contact" style="background:none;">
+						-->	<h2 style="color:black;">We <i class="fa fa-heart"></i> new friends!</h2>
+							<ul class="list-inline list-social">
+								<li class="social-twitter">
+									<a href="https://www.instagram.com/craft.night.out/" 
+										target="_blank"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li class="social-facebook">
+									<a href="https://www.facebook.com/craftnightout.ca/" 
+										target="_blank"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li class="social-email">
+			<a href="mailto:francesca@stampcraftlove.com?Subject=Craft%20Night%20Out%20Inquiry">
+						<i class="fa fa-envelope"></i></a>
+								</li>
+							</ul>
+						<!-- </section> -->
+
 						</div>
-							<hr>
-							<hr>
-							<hr>
-                        </div>
-                    </div>
+						<div class="row text-center">
+					 	  <form id="frmSubscribe" action="/subcribers/create"  class="form-inline">
+							<input type="email" id="txtEmail" 
+									class="form-control" placeholder="enter email" required />
+							<input type="submit" id="btnSubmit" style="margin:5px" class="btn btn-success" 
+								value="Subscribe" />
+						  </form>
+						</div>
+					</div>
+				</div>
+			 <!--	<div class="header-content">
+                    </div> -->
             </div>
-        </div>
     </header>
 
 
     <section id="events" class="features">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="container-fluid">
-                        <div class="row">
 						{{#if featuredevents }}
 								<div class="row">
 									<div class="col-lg-12 text-center">
@@ -109,8 +148,7 @@
 								</div>
 							{{/each}}
 						{{else}}
-								<div class="row">
-									<div class="col-lg-12 text-center">
+								<div class="row text-center">
 										<div class="section-heading">
 											<h2>~ Events ~</h2>
 											<h1>coming soon!</h1>
@@ -129,12 +167,9 @@
 											<input type="email" id="txtEmail" class="input-lg form-control" placeholder="enter email" required />
 											<input type="submit" id="btnSubmit" class="btn btn-lg btn-success" value="Subscribe" />
 										</form>
-									</div>
 								</div>
 						{{/if}}
                         </div>
-                </div>
-            </div>
     </section>
     
 	<section id="contact" class="features contact bg-primary">
@@ -169,7 +204,7 @@
 	-->
 
     
-	<!--
+	
 	<section id="organize" class="features bg-primary text-center">
 	<div class="container">
 	<div class="row">
@@ -182,7 +217,7 @@
 	</div>
 	</div>
 	</section>
-	-->
+
 	
 
 
