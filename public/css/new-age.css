@@ -15,15 +15,15 @@
 }
 
 .heading-font {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
 }
 .body-font {
-  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
 }
 .alt-font {
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -33,7 +33,7 @@ body {
   width: 100%;
 }
 body {
-  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
 }
 a {
   -webkit-transition: all 0.25s;
@@ -60,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
 }
@@ -75,12 +75,12 @@ p {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
 }
 .navbar-default .navbar-header .navbar-brand {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
   color: black;
@@ -95,7 +95,7 @@ p {
   padding: 8px 10px;
 }
 .navbar-default .nav > li > a {
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 11px;
@@ -436,7 +436,7 @@ footer ul li a.active {
   background-color: #fdcc52;
 }
 .btn {
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
 }
