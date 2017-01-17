@@ -24,12 +24,8 @@
             </div>
         </div>
     </nav>
-	<div class="row" style="margin-top:75px"> 
-		<div style="height:200px;padding:20px">
-			<div class="text-center">
+	<div class="row text-center" style="margin-top:85px"> 
 				<img src="../img/FB-Profile-Foil.jpg" style="opacity:0.8" height="200" width="200" >
-			</div>
-		</div>
 	</div>
 
     <header style="margin-left:20px;margin-right:20px">
@@ -56,9 +52,11 @@
 					</div>
 				</div>
 		</nav>
-            <div class="row" >
-				<div class="col-sm-8" style="height:200px">
-					<img src="../img/main.jpg" class="img-responsive" style="float:none;">
+            <div class="row ">
+				<div class="col-sm-8" >
+						<!-- <img src="../img/main.jpg" style="float:none;display:block;max-height:850px;max-width:1100px;width:auto;height:auto;margin-right:20%;margin-left:10%" > -->
+						<!--<img src="../img/main.jpg"  style="max-height:500px" > -->
+						<img src="../img/main.jpg" class="img-responsive" style="max-height:900px;width:1100px">
 				</div>
 				<div class="col-sm-4" >
 					<div style="height:600px;">
@@ -94,9 +92,9 @@
 						</div>
 						<div class="row social text-center">
 						<!-- <section id="contact" class="features contact" style="background:none;">
-						-->	<h2 style="color:black;">We <i class="fa fa-heart"></i> new friends!</h2>
+						-->	<h2 style="color:black;font-size:50px">We <i class="fa fa-heart" style="color:red;"></i> new friends!</h2>
 							<ul class="list-inline list-social">
-								<li class="social-twitter">
+								<li class="social-twitter" style="height:50px">
 									<a href="https://www.instagram.com/craft.night.out/" 
 										target="_blank"><i class="fa fa-instagram"></i></a>
 								</li>
@@ -119,11 +117,11 @@
 
 						</div>
 						<div class="row text-center">
-						  <h2 style="color:black;">New Events, fun news, and all things crafty!</h2>
+						  <h2 style="color:black;">New events, fun news, and all things crafty!</h2>
 					 	  <form id="frmSubscribe" action="/subcribers/create"  class="form-inline">
 							<input type="email" id="txtEmail" 
-									class="form-control" placeholder="enter email" required />
-							<input type="submit" id="btnSubmit" style="margin:5px" class="btn btn-success" 
+									class="form-control input-lg" placeholder="enter email" required />
+							<input type="submit" id="btnSubmit" style="margin:5px" class="btn btn-lg btn-success" 
 								value="Subscribe" />
 						  </form>
 						</div>
@@ -165,7 +163,7 @@
 						{{else}}
 								<div class="row text-center">
 									<div class="section-heading">
-										<h2>~ Upcomming Events ~</h2>
+										<h2> Upcoming Events </h2>
 									</div>
 								</div>
 								<div class="row">
@@ -184,7 +182,7 @@
 											<!-- Items -->
 											<div class="carousel-inner" >
 												<div class="item active">
-													<img src="../img/DSC09845s.jpg" alt="Slide 1" />
+													<img src="../img/DSC09845s.jpg" style="max-height:367px;width:555px" alt="Slide 2" />
 												</div>
 												<div class="item">
 													<img src="../img/DSC09688x.jpg" alt="Slide 2" />
@@ -278,7 +276,7 @@
 									
 								</div>
 									<div class="col-lg-6">
-										<h2>Jewlery Making</h2>
+										<h2>Jewellery Making</h2>
 										<div id="carousel_x" class="carousel slide" data-ride="carousel">
 											<!-- Menu -->
 											<ol class="carousel-indicators">
@@ -292,7 +290,7 @@
 													<img src="../img/_DSC2299.JPG"  alt="Slide 1" />
 												</div>
 												<div class="item">
-													<img src="../img/IMG_6783.JPG"  alt="Slide 2" />
+													<img src="../img/IMG_6783.JPG" style="max-height:367px;width:555px"  alt="Slide 2" />
 												</div>
 											<a href="#carousel_x" class="left carousel-control" data-slide="prev">
 												<span class="glyphicon glyphicon-chevron-left"></span>
@@ -308,17 +306,16 @@
 										<h4>Hosted by: Gemma By Design </h4>
 										<a href="www.thesavoybrasserie.com" target="_blank" style="font-size:20px">The Savoy Brasserie</a>
 										<h4>344 Richmond Road, Westboro</h4>
-										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 												<input type="hidden" name="cmd" value="_s-xclick">
-												<input type="hidden" name="hosted_button_id" value="MUFRWWW7865FN">
+												<input type="hidden" name="hosted_button_id" value="JBDUTYWG3NYYQ">
 												<table>
 												<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-													<option value="1 Ticket">1 Ticket $25.00 CAD</option>
-													<option value="2 Tickets">2 Tickets $50.00 CAD</option>
-													<option value="3 Tickets">3 Tickets $75.00 CAD</option>
-													<option value="4 Tickets">4 Tickets $100.00 CAD</option>
+													<option value="1 Ticket">1 Ticket $40.00 CAD</option>
+													<option value="2 Tickets">2 Tickets $80.00 CAD</option>
+													<option value="3 Tickets">3 Tickets $120.00 CAD</option>
+													<option value="4 Tickets">4 Tickets $160.00 CAD</option>
 												</select> </td></tr>
-												<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
 												</table>
 												<input type="hidden" name="currency_code" value="CAD">
 												<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -335,26 +332,6 @@
                         </div>
     </section>
     
-	<section id="contact" class="features contact bg-primary">
-        <div class="container">
-            <h2>About Us</h2>
-			<span style="font-size:25px">
-				Craft Night Out (CNO) highlights the social aspect of crafting by combining creativity with friends, food and drinks at local restaurants.  Our events feature dynamic and out-going crafters/artisans who supply all necessary materials  to complete a craft project so you don’t have to!
-			</span> <br><br><br>
-			<spani style="font-size:25px">
-NO started with my love of cutting, pasting and hosting parties. I hosted craft parties in my home with fancy apps and wine while friends worked a variety of craft projects that they brought themselves… Fun, right?! Actually, it was so fun that my craft night in soon became Craft Night Out! 
-			</span>
-		<br><br>	
-			<strong style="color:black;">
-				Fay McConnell,<br> 
-				Creator and Owner<br>
-				Craft Night Out<br>
-				IG: @craft.night.out<br>
-				FB: @craftnightout.ca
-
-			</strong>
-        </div>
-    </section>
 	<!--
 	<section id="subscribe" class="contact bg-primary">
 	<div class="row">
@@ -372,18 +349,102 @@ NO started with my love of cutting, pasting and hosting parties. I hosted craft 
 
     
 	
-	<section id="host" class="features bg-primary text-center">
+	<section id="host" class="features bg-primary">
 	<div class="container">
-	<div class="row">
-	<div class="col-md-8 col-md-offset-2">
-	<h2 class="section-heading">Let us help you organize an event !</h2>
-	<p>Coming soon!</p>
-	<div class="badges">
-	</div>
-	</div>
-	</div>
+				<h2 class="text-center">Host an Event</h2>
+		<div class="row">
+			<div class="col-md-4 ">
+				<h2 style="color:grey">Crafter/Artisan</h2>
+				<h3 style="color:black;">CNO is always open to promoting artisans and crafters by promoting their talents, products and handmade crafting business.  If you are interested in hosting an event with us, please let us know. We’d love to hear from you!</h3>
+					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
+							<input type="text" id="txtName" 
+									class="form-control input-lg" placeholder="Name" required name="title" /><hr>
+							<input type="email" id="txtEmail" 
+									class="form-control input-lg" placeholder="Email" required name="email" /><hr>
+							<input type="text" id="txtPhone" 
+									class="form-control input-lg" placeholder="Phone" required name="phone" /><hr>
+							<textarea id="txtDescription" class="form-control input-lg" placeholder="Event Description" name="description" rows=6></textarea><hr>
+							<input type="number" id="txtNumGuests" 
+									class="form-control input-lg" placeholder="Estimated Number of Guests" required name="guests" /><hr>
+							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" rows=6 name="comments"></textarea><hr>
+							<input type="text" id="txtType" 
+									style="display:none;" name="type" value="craft" /><hr>
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+							
+							<input type="submit" id="btnSubmitCrafter"  class="btn btn-success" 
+								value="Submit" />
+						  </form>
+			</div>
+			<div class="col-md-4 ">
+				<h2 style="color:grey">Eatery</h2>
+				<h3 style="color:black;">CNO would be delighted to host events at eateries / restaurants in the area. If you are a restaurant owner or manager and would like to discuss the possibility of hosting events, please let us know. We’d love to hear from you!</h3>
+					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+							<input type="text" id="txtName" 
+									class="form-control input-lg" name="title" placeholder="Eatery Name" required /><hr>
+							<input type="text" id="txtAddress" 
+									class="form-control input-lg" name="address" placeholder="Eatery Address" required /><hr>
+							<input type="text" id="txtWebsite" 
+									class="form-control input-lg" name="website" placeholder="Website" required /><hr>
+							<input type="email" id="txtEmail" 
+									class="form-control input-lg" name="email" placeholder="Email" required /><hr>
+							<input type="text" id="txtPhone" 
+									class="form-control input-lg" name="phone" placeholder="Phone" required /><hr>
+							<input type="text" id="txtType" 
+									style="display:none;" name="type" value="eatery" /><hr>
+							<textarea id="txtDescription" class="form-control input-lg" name="description" placeholder="Event Description" rows=6></textarea><hr>
+							<input type="number" id="txtNumGuests" 
+									class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests" required /><hr>
+							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" name="comments" rows=6></textarea><hr>
+							<input type="submit" id="btnSubmitEatery"  class="btn btn-success" 
+								value="Submit" />
+						  </form>
+			</div>
+			<div class="col-md-4 ">
+				<h2 style="color:grey">Private Events</h2>
+				<h3 style="color:black">CNO would be pleased to be at your next private event! We can help with adult birthday parties, workplace functions, team building events, and bachelorette and bridal parties</h3>
+					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+							<input type="text" id="txtName" 
+									class="form-control input-lg" placeholder="Name" name="title" required /><hr>
+							<input type="email" id="txtEmail" 
+									class="form-control input-lg" placeholder="Email" name="email" required /><hr>
+							<input type="text" id="txtPhone" 
+									class="form-control input-lg" placeholder="Phone" name="phone" required /><hr>
+							<textarea id="txtDescription" class="form-control input-lg" name="description" placeholder="Event Description" rows=6></textarea><hr>
+							<input type="number" id="txtNumGuests" 
+									class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests" required /><hr>
+							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" rows=6 name="comments"></textarea><hr>
+							<input type="text" id="txtType" 
+									style="display:none;" name="type" value="private" /><hr>
+							<input type="submit" id="btnSubmitPrivate"  class="btn btn-success" 
+								value="Submit" />
+						  </form>
+			</div>
+		</div>
 	</div>
 	</section>
+	
+	<section id="contact" class="features contact bg-primary">
+        <div class="container">
+            <h2>Ambout Us</h2>
+			<span style="font-size:25px">
+				Craft Night Out (CNO) highlights the social aspect of crafting by combining creativity with friends, food and drinks at local restaurants.  Our events feature dynamic and out-going crafters/artisans who supply all necessary materials  to complete a craft project so you don’t have to!
+			</span> <br><br><br>
+			<spani style="font-size:25px">
+CNO started with my love of cutting, pasting and hosting parties. I hosted craft parties in my home with fancy apps and wine while friends worked a variety of craft projects that they brought themselves… Fun, right?! Actually, it was so fun that my craft night in soon became Craft Night Out! 
+			</span>
+		<br><br>	
+			<strong style="color:black;">
+				Fay McConnell<br> 
+				Creator and Owner<br>
+				Craft Night Out<br>
+				IG: @craft.night.out<br>
+				FB: @craftnightout.ca
+
+			</strong>
+        </div>
+    </section>
 
 	
 
