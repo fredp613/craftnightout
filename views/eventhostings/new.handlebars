@@ -9,6 +9,8 @@
 
 <form id="frmHost" method="post" action="/eventhostings/create"  class="form-vertical">
 <input type="hidden" name="_csrf" value={{csrfToken}} />
+<input type="text" id="txtName1" 
+		class="form-control input-lg" name="name" placeholder="Name" required /><hr>
 <input type="text" id="txtName" 
 		class="form-control input-lg" name="title" placeholder="Eatery Name" required /><hr>
 <input type="text" id="txtAddress" 
@@ -21,9 +23,6 @@
 		class="form-control input-lg" name="phone" placeholder="Phone" required /><hr>
 <input type="text" id="txtType" 
 		style="display:none;" name="type" value="eatery" /><hr>
-<textarea id="txtDescription" class="form-control input-lg" name="description" placeholder="Event Description" rows=6></textarea><hr>
-<input type="number" id="txtNumGuests" 
-		class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests" required /><hr>
 <textarea id="txtComments" class="form-control input-lg" placeholder="Comments" name="comments" rows=6></textarea><hr>
 <input type="submit" id="btnSubmitEatery"  class="btn btn-success" 
 	value="Submit" />
@@ -35,15 +34,18 @@
 	<h3 style="color:black;">CNO is always open to promoting artisans and crafters by promoting their talents, products and handmade crafting business.  If you are interested in hosting an event with us, please let us know. We’d love to hear from you!</h3>
 
 <form id="frmHost" method="post" action="/eventhostings/create"  class="form-vertical">
+<input type="text" id="txtName2" 
+		class="form-control input-lg" name="name" placeholder="Name" required /><hr>
+<input type="text" id="txtName1" 
+		class="form-control input-lg" placeholder="Craft/Skill" required name="skill" /><hr>
 <input type="text" id="txtName" 
-		class="form-control input-lg" placeholder="Name" required name="title" /><hr>
+		class="form-control input-lg" placeholder="Business Name" required name="title" /><hr>
+<input type="text" id="txtWebsite" 
+		class="form-control input-lg" name="website" placeholder="Website" required /><hr>
 <input type="email" id="txtEmail" 
 		class="form-control input-lg" placeholder="Email" required name="email" /><hr>
 <input type="text" id="txtPhone" 
 		class="form-control input-lg" placeholder="Phone" required name="phone" /><hr>
-<textarea id="txtDescription" class="form-control input-lg" placeholder="Event Description" name="description" rows=6></textarea><hr>
-<input type="number" id="txtNumGuests" 
-		class="form-control input-lg" placeholder="Estimated Number of Guests" required name="guests" /><hr>
 <textarea id="txtComments" class="form-control input-lg" placeholder="Comments" rows=6 name="comments"></textarea><hr>
 <input type="text" id="txtType" 
 		style="display:none;" name="type" value="craft" /><hr>
@@ -56,8 +58,8 @@
 {{else}}
 <div class="col-lg-6 ">
 	<h2 style="color:grey">Private Events</h2>
-	<h3 style="color:black">CNO would be pleased to be at your next private event! We can help with adult birthday parties, workplace functions, team building events, and bachelorette and bridal parties. If you are interested in organizing an event where CNO will be featured, please let us know. We’d love to hear from you!
-</h3>
+	<h3 style="color:black">CNO would be pleased to be at your next private event! We host adult birthday parties, workplace functions, team building events, bachelorette / bridal parties, and more. If you are interested in organizing an event where CNO will be featured, please let us know. We’d love to hear from you!
+</>
 
 <form id="frmHost" method="post" action="/eventhostings/create"  class="form-vertical">
 <input type="hidden" name="_csrf" value={{csrfToken}} />

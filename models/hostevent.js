@@ -7,6 +7,8 @@ let Schema = mongoose.Schema;
 
 const HostEvent = new mongoose.Schema({
 	title: String,
+	skill: String,
+	name: String,
 	description: String,
 	address: String,
 	website: String,
