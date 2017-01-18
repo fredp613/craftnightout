@@ -335,11 +335,11 @@
 	<!--
 	<section id="subscribe" class="contact bg-primary">
 	<div class="row">
-	<h2>Subscribe to get updated when new craft events are organized!</h2>
+	<h2>subscribe to get updated when new craft events are organized!</h2>
 	<div class="col-md-6-offset-3">	
-	<form id="frmSubscribe" action="/subcribers/create"  class="form-inline">
-	<input type="email" class="form-control" placeholder="Enter email" required />
-	<input type="submit" id="btnSubmit" class="btn btn-primary" value="Subscribe" />
+	<form id="frmsubscribe" action="/subcribers/create"  class="form-inline">
+	<input type="email" class="form-control" placeholder="enter email" required />
+	<input type="submit" id="btnsubmit" class="btn btn-primary" value="subscribe" />
 
 	</form>
 	</div>
@@ -352,76 +352,9 @@
 	<section id="host" class="features bg-primary">
 	<div class="container">
 				<h2 class="text-center">Host an Event</h2>
-		<div class="row">
-			<div class="col-md-4 ">
-				<h2 style="color:grey">Crafter/Artisan</h2>
-				<h3 style="color:black;">CNO is always open to promoting artisans and crafters by promoting their talents, products and handmade crafting business.  If you are interested in hosting an event with us, please let us know. We’d love to hear from you!</h3>
-					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
-							<input type="text" id="txtName" 
-									class="form-control input-lg" placeholder="Name" required name="title" /><hr>
-							<input type="email" id="txtEmail" 
-									class="form-control input-lg" placeholder="Email" required name="email" /><hr>
-							<input type="text" id="txtPhone" 
-									class="form-control input-lg" placeholder="Phone" required name="phone" /><hr>
-							<textarea id="txtDescription" class="form-control input-lg" placeholder="Event Description" name="description" rows=6></textarea><hr>
-							<input type="number" id="txtNumGuests" 
-									class="form-control input-lg" placeholder="Estimated Number of Guests" required name="guests" /><hr>
-							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" rows=6 name="comments"></textarea><hr>
-							<input type="text" id="txtType" 
-									style="display:none;" name="type" value="craft" /><hr>
-		<input type="hidden" name="_csrf" value={{csrfToken}} />
-							
-							<input type="submit" id="btnSubmitCrafter"  class="btn btn-success" 
-								value="Submit" />
-						  </form>
-			</div>
-			<div class="col-md-4 ">
-				<h2 style="color:grey">Eatery</h2>
-				<h3 style="color:black;">CNO would be delighted to host events at eateries / restaurants in the area. If you are a restaurant owner or manager and would like to discuss the possibility of hosting events, please let us know. We’d love to hear from you!</h3>
-					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
-		<input type="hidden" name="_csrf" value={{csrfToken}} />
-							<input type="text" id="txtName" 
-									class="form-control input-lg" name="title" placeholder="Eatery Name" required /><hr>
-							<input type="text" id="txtAddress" 
-									class="form-control input-lg" name="address" placeholder="Eatery Address" required /><hr>
-							<input type="text" id="txtWebsite" 
-									class="form-control input-lg" name="website" placeholder="Website" required /><hr>
-							<input type="email" id="txtEmail" 
-									class="form-control input-lg" name="email" placeholder="Email" required /><hr>
-							<input type="text" id="txtPhone" 
-									class="form-control input-lg" name="phone" placeholder="Phone" required /><hr>
-							<input type="text" id="txtType" 
-									style="display:none;" name="type" value="eatery" /><hr>
-							<textarea id="txtDescription" class="form-control input-lg" name="description" placeholder="Event Description" rows=6></textarea><hr>
-							<input type="number" id="txtNumGuests" 
-									class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests" required /><hr>
-							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" name="comments" rows=6></textarea><hr>
-							<input type="submit" id="btnSubmitEatery"  class="btn btn-success" 
-								value="Submit" />
-						  </form>
-			</div>
-			<div class="col-md-4 ">
-				<h2 style="color:grey">Private Events</h2>
-				<h3 style="color:black">CNO would be pleased to be at your next private event! We can help with adult birthday parties, workplace functions, team building events, and bachelorette and bridal parties</h3>
-					 	  <form id="frmHost" method="post" action="/"  class="form-vertical">
-		<input type="hidden" name="_csrf" value={{csrfToken}} />
-							<input type="text" id="txtName" 
-									class="form-control input-lg" placeholder="Name" name="title" required /><hr>
-							<input type="email" id="txtEmail" 
-									class="form-control input-lg" placeholder="Email" name="email" required /><hr>
-							<input type="text" id="txtPhone" 
-									class="form-control input-lg" placeholder="Phone" name="phone" required /><hr>
-							<textarea id="txtDescription" class="form-control input-lg" name="description" placeholder="Event Description" rows=6></textarea><hr>
-							<input type="number" id="txtNumGuests" 
-									class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests" required /><hr>
-							<textarea id="txtComments" class="form-control input-lg" placeholder="Comments" rows=6 name="comments"></textarea><hr>
-							<input type="text" id="txtType" 
-									style="display:none;" name="type" value="private" /><hr>
-							<input type="submit" id="btnSubmitPrivate"  class="btn btn-success" 
-								value="Submit" />
-						  </form>
-			</div>
-		</div>
+				<h3 class="text-center"><a href="/eventhostings/new/crafter" alt="Crafter-Artisan">Crafter/Aritsan</a></h3><br>
+				<h3 class="text-center"><a href="/eventhostings/new/eatery" alt="Eatery">Eatery</a></h3><br>
+				<h3 class="text-center"><a href="/eventhostings/new/private" alt="Private Events">Private Events</a></h3><br>
 	</div>
 	</section>
 	
