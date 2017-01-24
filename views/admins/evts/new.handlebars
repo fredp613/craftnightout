@@ -7,8 +7,8 @@
 		<input type="hidden" name="_csrf" value={{csrfToken}} />
 		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input><hr>
 		<input type="text" class="form-control" name="hostedBy" id="txtHostedBy" placeholder="Hosted By" required=true></input><hr>
-		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" required=true></input><hr>
-		<input type="text" class="form-control" name="instagram" id="txtInstagram" placeholder="Instagram Link" required=true></input>
+		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" ></input><hr>
+		<input type="text" class="form-control" name="instagram" id="txtInstagram" placeholder="Instagram Link" ></input>
 		<hr>
 
 		<div class='input-group date' id='datetimepicker1'>
@@ -24,7 +24,7 @@
 		<div class="form-group">
 			<div class="checkbox">
 				<label>
-					<input type="checkbox"  name="isPrivate" id="txtPrivate"  required=true>Is Private
+					<input type="checkbox"  name="isPrivate" id="txtPrivate" >Is Private
 				</label>
 			</div>
 		</div>
@@ -32,13 +32,13 @@
 		<textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription" rows="5"></textarea><hr>
 		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5"></textarea>
 		<hr>
-		<select class="form-control">
-			<option>Cardmaking</option>
-			<option>Jewellery</option>
+		<select class="form-control" name="eventType">
+			<option value="Cardmaking">Cardmaking</option>
+			<option value="Jewellery">Jewellery</option>
 		</select><hr>
 		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true></input><hr>
 		<div id="locationField">
-		<input id="autocomplete" id="txtLocation" class="form-control" name="address" placeholder="Enter address" onInput="toggleSubmit()"  onFocus="geolocate()" type="text"></input>
+		<input id="autocomplete" id="txtLocation" class="form-control" name="address" placeholder="Enter address" onInput="toggleSubmit()"  type="text"></input>
 		</div>
 		<hr>
 		<input type="text" name="lat" id="lat" style="display:none;"></input>
@@ -83,19 +83,13 @@
 </table>
 -->
     <script>
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
  	  function toggleSubmit() {
 		document.getElementById("submit").setAttribute("disabled", "disabled");
 	  }
 
       var placeSearch, autocomplete;
       var componentForm = {
-        street_number: 'short_name',
+        street_number: 'long_name',
         route: 'long_name',
         locality: 'long_name',
         administrative_area_level_1: 'short_name',
@@ -225,17 +219,7 @@
           }
         });
       }
-	 var dtp = document.getElementById("datetimepicker1");
-	 dtp.datetimepicker();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete&initMap"
         async defer></script>
-
-<!--	<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initMap">
-   </script> -->
-
-
-
-
 

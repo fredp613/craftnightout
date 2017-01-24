@@ -17,6 +17,24 @@
 		});
 
   });
+	
+	var paypalBtns = $(".paypalBtnItem");;	
+	if (paypalBtns) {
+		$.each(paypalBtns, function(btn){
+			console.log($(this).text());
+			var btnForm = $.parseHTML($(this).text());
+			$(this).replaceWith(btnForm);
+		});
+	}
+	var dates = $(".evtDate");
+	$.each(dates, function(d){
+		var humanDate = moment($(this).text()).format('dddd MMMM Do YYYY')
+		$(this).replaceWith(humanDate);
+
+	});
+	console.log($(".testing").text())	
+	console.log($(".testing").length)	
+	$(".testing").show();
 
 
 })(jQuery); // End of use strict
