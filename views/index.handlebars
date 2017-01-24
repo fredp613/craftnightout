@@ -123,11 +123,6 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="testing" style="display:none;" >
-					{{#each cardmakingEvents}}
-						<strong>{{title}}</strong>	
-					{{/each}}
-				</div>
 				<div class="col-lg-6">
 					<h2>Cardmaking</h2>
 					<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -165,73 +160,29 @@
 						</a>
 					</div>
 				</div>
-				<h2>January</h2>
-				<div id="event-info-1" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					<h3>Thursday, January 26, 2017 from 7-9pm</h3>
-					<strong style="font-size:20px">All-Occasion Greeting Cards using Japanese Paper </strong>
-					<h4>Hosted by: Stampcraftlove (Fay) </h4>
-					<a href="www.kinkiloungekitchen.com" target="_blank" style="font-size:20px">Kinki Lounge & Kitchen</a>
-					<h4>41 York Street, Ottawa</h4>
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="hosted_button_id" value="MUFRWWW7865FN">
-						<table>
-						<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-							<option value="1 Ticket">1 Ticket $25.00 CAD</option>
-							<option value="2 Tickets">2 Tickets $50.00 CAD</option>
-							<option value="3 Tickets">3 Tickets $75.00 CAD</option>
-							<option value="4 Tickets">4 Tickets $100.00 CAD</option>
-						</select> </td></tr>
-						<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-						</table>
-						<input type="hidden" name="currency_code" value="CAD">
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-
-				</div>
-				<div id="event-info-2" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					<h3>Sunday, January 29, 2017 from 7-9pm</h3>
-					<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
-					<h4>Hosted by: Stampcraftlove (Fay) </h4>
-				<a href="www.flapjacks.ca" target="_blank" style="font-size:20px">Flapjacks Canadian Dinner - Little Italy</a>
-					<h4>354A Preston Street, Ottawa</h4>
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="hosted_button_id" value="HMXAX7RY6F8XA">
-					<table>
-					<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-						<option value="1 Ticket">1 Ticket $25.00 CAD</option>
-						<option value="2 Tickets">2 Tickets $50.00 CAD</option>
-						<option value="3 Tickets">3 Tickets $75.00 CAD</option>
-						<option value="4 Tickets">4 Tickets $100.00 CAD</option>
-					</select> </td></tr>
-					<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-					</table>
-					<input type="hidden" name="currency_code" value="CAD">
-					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-					</form>
-
-				</div>
-			
-
-
-				<h2>February<h2>
-				<div id="event-info-3" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					<h3>Wednesday, February 8th, 2017 from 7-9PM </h3>
-					<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
-					<h4>Hosted by: Stampcraftlove (Fay) </h4>
-					<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Maker House & Co (SPECIAL EVENT)</a>
-					<h4>987 Wellington Street West – Hintonburg</h4>
-				</div>
-				<div id="event-info-4" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					<h3>Monday, February 27th, 2017 from 7-9PM </h3>
-					<strong style="font-size:20px">Handmade Juvenile Birthday Cards</strong>
-					<h4>Hosted by: Stampcraftlove (Fay) </h4>
-					<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Industria Italian Brasserie – Landsdowne Park</a>
-					<h4>225 Marche Way</h4>
-				</div>
+						{{#each cardMakingEvents}}
+								<div style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+									<span id="eventDate" style="display:none;">{{eventDate}}</span>
+									<a href="/events/{{_id}}">
+										<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
+										<strong style="font-size:20px">{{title}} </strong>
+									</a>
+									<h4>Hosted By: {{hostedBy}} </h4>
+									{{#if locationWebsite}}
+									<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
+									{{else}}
+									<span style="font-size:20px">{{locationName}}</span>
+									{{/if}}
+									<h4>{{address}}</h4>
+									{{#if paypalButton}}
+										<div class="paypalBtnContainer" >
+											<div class="paypalBtnItem">
+												{{paypalButton}}
+											</div>
+										</div>
+									{{/if}}
+								</div>
+						{{/each}}
 
 					
 				
@@ -260,31 +211,29 @@
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</a>
 					</div>
-				<h2>February 2017</h2>
-				<div id="event-info-5" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					<h3>Sunday, February 19th, 2017 from 7-8:30PM </h3>
-					<strong style="font-size:20px">Gemstone Bracelets</strong>
-					<h4>Hosted by: Gemma By Design </h4>
-					<a href="www.thesavoybrasserie.com" target="_blank" style="font-size:20px">The Savoy Brasserie</a>
-					<h4>344 Richmond Road, Westboro</h4>
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-							<input type="hidden" name="cmd" value="_s-xclick">
-							<input type="hidden" name="hosted_button_id" value="JBDUTYWG3NYYQ">
-							<table>
-							<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-								<option value="1 Ticket">1 Ticket $40.00 CAD</option>
-								<option value="2 Tickets">2 Tickets $80.00 CAD</option>
-								<option value="3 Tickets">3 Tickets $120.00 CAD</option>
-								<option value="4 Tickets">4 Tickets $160.00 CAD</option>
-							</select> </td></tr>
-							</table>
-							<input type="hidden" name="currency_code" value="CAD">
-							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-
-				</div>
-				</div>
+						{{#each jewelleryEvents}}
+								<div style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+									<span id="eventDate" style="display:none;">{{eventDate}}</span>
+									<a href="/events/{{_id}}">
+										<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
+										<strong style="font-size:20px">{{title}} </strong>
+									</a>
+									<h4>Hosted By: {{hostedBy}} </h4>
+									{{#if locationWebsite}}
+									<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
+									{{else}}
+									<span style="font-size:20px">{{locationName}}</span>
+									{{/if}}
+									<h4>{{address}}</h4>
+									{{#if paypalButton}}
+										<div class="paypalBtnContainer" >
+											<div class="paypalBtnItem">
+												{{paypalButton}}
+											</div>
+										</div>
+									{{/if}}
+								</div>
+						{{/each}}
 			</div>
 			</div>
 

@@ -1,6 +1,6 @@
 
 <section id="features" class="features">
-<div class="row">
+<div class="row-fluid">
 	<a class="btn btn-primary" href="/admins/evts/new">Add New Event</a>
 </div>
 	{{#if events}}
@@ -14,7 +14,11 @@
 				</div>
 		{{#each events}}
 				<div style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					{{#if isPrivate}}
+						<h2>PRIVATE EVENT</h2>
+					{{/if}}
 					<span id="eventDate" style="display:none;">{{eventDate}}</span>
+	
 					<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
 					<strong style="font-size:20px">{{title}} </strong>
 					<h4>{{hostedBy}} </h4>
@@ -33,6 +37,7 @@
 					{{/if}}
 					<a href="/admins/evts/edit/{{_id}}" class="btn btn-info">Edit</a>
 					<a href="/admins/evts/destroy/{{_id}}" class="btn btn-danger">Destroy</a>
+					<h3>Share: https://craftnightout.ca/events/{{_id}}</h3>
 				</div>
 		{{/each}}
 	{{/if}}

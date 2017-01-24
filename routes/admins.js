@@ -16,12 +16,6 @@ router.get('/', (req, res) => {
 router.get('/evts/new', (req, res) => {
   res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', csrfToken: req.csrfToken()});
 });
-
-//EDIT  EVENT
-router.get('/evts/edit/:id', (req, res) => {
-  res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars'});
-});
-
 //CREATE EVENT
 router.post('/evts/create', (req, res) => {
 	console.log(req.body)
@@ -39,44 +33,45 @@ router.post('/evts/create', (req, res) => {
 
 });
 
-//UPdate event
-router.post('/evts/update', (req, res) => {
-	
-	const craftevent = req.body.craftevent;
-	craftevent.findOne({}, (err, doc) => {
+//EDIT  EVENT
+router.get('/evts/edit/:id', (req, res) => {
+	CraftEvent.findOne({_id:req.params.id}, (err, doc) => {
+		console.log(doc)
 		if (err) {
 			res.render('/evts',{
 				message: "Event not found",
 				layout: "admin.handlebars"
 			})
-		};
+		} else {
+  		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), craftevent:doc});
 
-		craftevent.save((err)=>{
-			if (err) {
-				res.render('/evt',{
-					success: false,
-					message: "Something went wrong",
-					layout: "other.handlebars"
-				});
-			}
-			res.redirect('/evts');	
-		});
+		}
 	});
+
 });
+//UPdate event
+router.post('/evts/update', (req, res) => {
+	console.log(req.body)
+	delete req.body["_csrf"];
+	CraftEvent.findOneAndUpdate({_id:req.body._id}, req.body, {upsert:false}, (err,doc)=>{
+		if (err) {
+			res.render('/evts/edit/'+req.body._id,{
+				message: "something went wrong",
+				layout: "admin.handlebars"
+			})
+
+		} else {
+			res.redirect("/admins/evts");
+		}
+	});	
+	
+});
+
+
 router.get('/evts/destroy/:id', (req, res) => {
 	let craftEventId = req.params.id;
-	CraftEvent.remove({_id:craftEventId}, function(err) {
-		if (!err) {
-			res.render('/evts',{
-				message: "Event not found",
-				layout: "admin.handlebars"
-			})
-		} else {
-			res.render('/evts',{
-				message: "Event Deleted",
-				layout: "admin.handlebars"
-			})
-		}
+	CraftEvent.findOneAndRemove({_id:craftEventId}, function(err) {
+			res.redirect("/admins/evts")
 
 	});
 });

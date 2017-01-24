@@ -11,6 +11,7 @@ const CraftEvent = new mongoose.Schema({
 	hostedBy: String,
 	locationName: String,
 	locationAddress: String,
+	locationWebsite: String,
 	address: String,
 	eventDate: String,
 	eventStartTime: String,

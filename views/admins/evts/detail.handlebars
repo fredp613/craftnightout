@@ -4,8 +4,8 @@
 		<h3>Event Details<h3>
 		<h4>{{eventDetail.title}}</h4>
 		<h4>{{eventDetail.description}}</h4>
-		<span id="latitude" style="display:none;">{{eventDetail.lat}}</span>
-		<span id="longitude" style="display:none;">{{eventDetail.lng}}</span>
+	<input type="hidden" id="lat" value="{{eventDetail.lat}}" />
+	<input type="hidden" id="lng" value="{{eventDetail.lng}}" />
 	</div>
 	<div class="col-sm-7">
 	</div>
@@ -14,35 +14,22 @@
 <div id="map" style="height:500px;width:500px"></div>
 
 <script type="text/javascript">
-	 function initMap() {
-    	var longitude = parseFloat(document.getElementById('longitude').innerHTML)
-    	var latitude = parseFloat(document.getElementById('latitude').innerHTML)
-	    var map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: latitude, lng: longitude},
-			  zoom: 15
-        });
-		//var latLng = new google.maps.LatLng(-8.064903, -34.896872)
-        
-		var infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-
-        service.getDetails({
-          placeId: 'ChIJrxNRX7IFzkwR7RXdMeFRaoo'
-        }, function(place, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            var marker = new google.maps.Marker({
-              map: map,
-              position: {lat:latitude, lng:longitude} 
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Place ID: ' + place.place_id + '<br>' +
-                place.formatted_address + '</div>');
-              infowindow.open(map, this);
-            });
-          }
-        });
-      }
+    <script>
+		function initMap() {
+			var latz = document.getElementById("lat").value;
+			var lngz = document.getElementById("lng").value;
+			var urulu = {lat: lat, lng: lng};
+			var latlng = new google.maps.LatLng(latz, lngz);
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom:15,		
+				center: latlng
+			});
+			var marker = new google.maps.Marker({
+				position: latlng,
+				map: map
+			});
+		}	
+    </script>
 	
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initMap">

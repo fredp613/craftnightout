@@ -8,18 +8,17 @@ import { sendEmail } from '../helpers/email';
 /* GET home page. */
 router.get('/', function(req, res) {
 	CraftEvent
-		.find({eventType: "Cardmaking", isPrivate: false})
+		.find({eventType: "Cardmaking", isPrivate:null})
 		.limit(4)
 		.exec((err, docs)=>{
-			let cardmakingDocs = docs;
 			CraftEvent
-				.find({eventType: "Jewellery", isPrivate: false})
+				.find({eventType: "Jewellery", isPrivate:null})
 				.limit(4)
 				.exec((err1, docs1)=>{
-					res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',cardmakingEvents: docs, 
-						jewelleryEvents:docs1, csrfToken: req.csrfToken()});
+					res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',cardMakingEvents: docs, jewelleryEvents: docs1, csrfToken: req.csrfToken()});
+
 				});
-			});
+		});
 			
 });
 

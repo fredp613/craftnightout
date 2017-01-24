@@ -1,11 +1,191 @@
-<strong>Edit Event</strong>
+<div class="row">
+	
+	<div class="col-sm-5">
+		<strong>Edit Event</strong>
+		<hr>
+		<form method="post" action="/admins/evts/update"> 
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+		<input type="hidden" name="_id" value="{{craftevent._id}}" />
+		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true value="{{craftevent.title}}" /><hr>
+		<input type="text" class="form-control" name="hostedBy" id="txtHostedBy" placeholder="Hosted By" required=true value="{{craftevent.hostedBy}}" /><hr>
+		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" value="{{craftevent.facebook}}" /><hr>
+		<input type="text" class="form-control" name="instagram" id="txtInstagram" placeholder="Instagram Link" value="{{craftevent.instagram}}" />
+		<hr>
 
-<form method="post" action="/admins/evts/update"> 
-  <input type="hidden" name="_csrf" value={{csrfToken}} />
-  <input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true>{{craftevent.title}}</input>
-  <input type="text" class="form-control" name="title" id="txtLocation" placeholder="Event Location Name" required=true>{{craftevent.locationName}}</input>
-  <input type="text" class="form-control" name="title" id="txtAddress" placeholder="Event Address" required=true>{{craftevent.address}}</input>
-  <input type="date" class="form-control" name="title" id="txtDate" placeholder="Event Date" required=true>{{craftevent.date}}</input>
-  <textarea name="description" class="form-control" id="txtDescription" rows="5">{{craftevent.description}}</textarea>
-  <input type="submit" id="submit" value='Update'></input>
-</form>
+		<div class='input-group date' id='datetimepicker1'>
+			<input type='text' placeholder="Event Date" id="txtDate" name="eventDate" class="form-control" value="{{craftevent.eventDate}}" />
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div><hr>
+
+
+		<input type="text" class="form-control" name="eventStartTime" id="txtStartTime" placeholder="Event Start Time" required=true value="{{craftevent.eventStartTime}}" /><hr>
+		<input type="text" class="form-control" name="eventEndTime" id="txtEndTime" placeholder="Event Start Time" required=true value="{{craftevent.eventEndTime}}" /><hr>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					{{#if craftevent.isPrivate}}
+					<input type="checkbox"  name="isPrivate" id="txtPrivate" checked >Is Private
+					{{else}}
+					<input type="checkbox"  name="isPrivate" id="txtPrivate" >Is Private
+					{{/if}}
+				</label>
+			</div>
+		</div>
+		<hr>
+		<textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription"  rows="5">{{craftevent.description}}</textarea><hr>
+		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5">{{craftevent.paypalButton}}</textarea>
+		<hr>
+		<select class="form-control" name="eventType">
+			<option value="Cardmaking">Cardmaking</option>
+			<option value="Jewellery">Jewellery</option>
+		</select><hr>
+		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true value="{{craftevent.locationName}}" /><hr>
+		<input type="text" class="form-control" name="locationWebsite" id="txtLocationName" placeholder="Location Website" value="{{craftevent.locationWebsite}}" /><hr>
+		<div id="locationField">
+		<input id="autocomplete" id="txtLocation" class="form-control" name="address" placeholder="Enter address" onInput="toggleSubmit()"  type="text" value="{{craftevent.address}}" />
+		</div>
+		<hr>
+		<input type="text" name="lat" id="lat" style="display:none;" value="{{lat}}" />
+		<input type="text" name="lng" id="long" style="display:none;" value="{{lng}}" />
+		<input type="submit" class="btn btn-primary" id="submit" value='Save'></input>
+		</form>
+		<hr>
+
+	</div>
+
+	<div id="map" class="col-sm-7" style="width:55%;height:800px"></div>
+</div>
+
+
+    <script>
+	  initMap();
+ 	  function toggleSubmit() {
+		document.getElementById("submit").setAttribute("disabled", "disabled");
+	  }
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'long_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+		  var map;
+		  var lng = $("#long").val();
+		  var lat = $("#lat").val();
+		  map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: parseFloat(lat), lng: parseFloat(lng)},
+			zoom: 8
+		  });
+      
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode', 'establishment']})
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        var place = autocomplete.getPlace();
+
+		console.log(place);
+		initMapWithParams(place);
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy,
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+	}
+
+	function initMapWithParams(place) {
+		if (!(place.geometry.viewport)) {
+			return;
+		}
+	    var latitude = place.geometry.viewport.f.b || null;
+		var longitude = place.geometry.viewport.b.b || null;
+		var placeId = place.place_id || null;
+		document.getElementById("lat").value = latitude;
+		document.getElementById("long").value = longitude;
+		var map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat: latitude, lng: longitude},
+			  zoom: 15
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: placeId
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+
+	}
+	 function initMap() {
+	    var lng = $("#long").val();
+	    var lat = $("#lat").val();
+    
+	    var map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat:lat , lng: lng},
+			  zoom: 15
+        });
+		//var latLng = new google.maps.LatLng(-8.064903, -34.896872)
+        
+		var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        service.getDetails({
+          placeId: 'ChIJrxNRX7IFzkwR7RXdMeFRaoo'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete&initMap"
+        async defer></script>
+
