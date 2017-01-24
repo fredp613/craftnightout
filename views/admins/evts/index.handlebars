@@ -13,20 +13,20 @@
 									</div>
 								</div>
 		{{#each events}}
-								<div class="col-md-6">
-								   <div class="feature-item">
-									<a href="/admins/evts/{{_id}}">
-										<i class="icon-present text-primary"></i>
-								   </a>
-								   <a href="/admins/evts/{{_id}}">
-										<h3>{{title}}</h3>
-								   </a>
-								   <a href="/admins/evts/{{_id}}">
-										<p class="text-muted">{{description}}</p>
-								   </a>
-									</div>
-									<button class="btn btn-danger">Delete</button>
-								</div>
+				<div style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>{{eventDate}} {{eventStartTime}} {{eventEndTime}} </h3>
+					<strong style="font-size:20px">{{title}} </strong>
+					<h4>{{hostedBy}} </h4>
+					{{#if locationWebsite}}
+					<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
+					{{else}}
+					<span style="font-size:20px">{{locationName}}</span>
+					{{/if}}
+					<h4>{{address}}</h4>
+					<div id="paypalFormContainer">
+					{{paypalButton}}
+					</div>
+				</div>
 		{{/each}}
 	{{/if}}
 </section>

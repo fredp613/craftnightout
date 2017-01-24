@@ -33,41 +33,45 @@
 					</div>
 				</div>
 		</nav>
-            <div class="row ">
-				<div class="col-sm-8" >
+            <div class="row">
 						<!-- <img src="../img/main.jpg" style="float:none;display:block;max-height:850px;max-width:1100px;width:auto;height:auto;margin-right:20%;margin-left:10%" > -->
 						<!--<img src="../img/main.jpg"  style="max-height:500px" > -->
-						<img src="../img/Main2.jpg" class="img-responsive" style="max-height:800px">
-				</div>
-				<div class="col-sm-4" >
+						<div class="col-lg-12">
+						<img src="../img/main1.jpg" class="img-responsive text-center" style="">
+						</div>
+
+			 <!--	<div class="header-content">
+                    </div> -->
+            </div>
+				<div class="row" >
 					<div >
 						<div class="row partRestaurants text-center">
 							<div class="col-lg-12">
-								<h2 style="color:black;">Participating Restaurants</h2>
+								<h2 style="color:black;font-size:40px">Participating Restaurants</h2>
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<!--<img src="http://placehold.it/150x150" class="center-block"> -->
 								<img src="../img/flapjacks-logo.png" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/green-papaya-logo.jpg" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/HPH-log.png" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/Industria-logo.gif" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/Kinkilogo.jpg" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/KS-on-the-keys.png" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/Salt-logo.jpg" width=150 height=150 class="center-block">
 							</div>
-							<div class="col-lg-4 thumb" style="padding:10px">
+							<div class="col-lg-3 thumb" style="padding:10px">
 								<img src="../img/vittoria-in-the-village.jpg" width=150 height=150 class="center-block">
 							</div>
 						</div>
@@ -75,15 +79,15 @@
 						<!-- <section id="contact" class="features contact" style="background:none;">
 						-->	<h2 style="color:black;font-size:50px">We <i class="fa fa-heart" style="color:red;"></i> new friends!</h2>
 							<ul class="list-inline list-social">
-								<li class="social-twitter" style="height:50px">
+								<li class="social-twitter" style="height:50px;font-size:30px">
 									<a href="https://www.instagram.com/craft.night.out/" 
 										target="_blank"><i class="fa fa-instagram"></i></a>
 								</li>
-								<li class="social-facebook">
+								<li class="social-facebook" style="font-size:30px">
 									<a href="https://www.facebook.com/craftnightout.ca/" 
 										target="_blank"><i class="fa fa-facebook"></i></a>
 								</li>
-								<li class="social-rss">
+								<li class="social-rss" style="font-size:30px">
 									<a href="http://www.stampcraftlove.com" 
 										target="_blank"><i class="fa fa-rss"></i></a>
 								</li>
@@ -108,214 +112,186 @@
 						</div>
 					</div>
 				</div>
-			 <!--	<div class="header-content">
-                    </div> -->
-            </div>
     </header>
 
 
     <section id="events" class="features">
         <div class="container">
-						{{#if featuredevents }}
-								<div class="row">
-									<div class="col-lg-12 text-center">
-										<div class="section-heading">
-											<h2>upcomming events. register now.</h2>
-											<p class="text-muted">select an event below to view additional details</p>
-											<hr>
-										</div>
-									</div>
-								</div>
-							{{#each featuredevents}}
-								<div class="col-md-6">
-								   <div class="feature-item">
-									   <a class="text-muted" href="/events/{{_id}}">
-											<h2>{{title}}</h2>
-									   </a>
-									   <a href="/events/{{_id}}">
-											<p class="text-muted">{{description}}</p>
-									   </a>
-											<p class="text-muted">{{date}}</p>
-											<p class="text-muted">{{locationname}}</p>
-											<p class="text-muted">{{address}}</p>
-									</div>
-								</div>
-							{{/each}}
-						{{else}}
-								<div class="row text-center">
-									<div class="section-heading">
-										<h2> Upcoming Events </h2>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6">
-										<h2>Cardmaking</h2>
-										<div id="carousel" class="carousel slide" data-ride="carousel">
-											<!-- Menu -->
-											<ol class="carousel-indicators">
-												<li data-target="#carousel" data-slide-to="0" class="active"></li>
-												<li data-target="#carousel" data-slide-to="1"></li>
-												<li data-target="#carousel" data-slide-to="2"></li>
-												<li data-target="#carousel" data-slide-to="3"></li>
-												<li data-target="#carousel" data-slide-to="4"></li>
-											</ol>
-											
-											<!-- Items -->
-											<div class="carousel-inner" >
-												<div class="item active">
-													<img src="../img/DSC09845s.jpg" style="max-height:367px;width:555px" alt="Slide 2" />
-												</div>
-												<div class="item">
-													<img src="../img/DSC09688x.jpg" alt="Slide 2" />
-												</div>
-												<div class="item">
-													<img src="../img/DSC09671x.jpg" alt="Slide 3" />
-												</div>
-												<div class="item">
-													<img src="../img/DSC09923x.jpg" alt="Slide 4" />
-												</div>
-												<div class="item">
-													<img src="../img/DSC09939x.jpg" alt="Slide 5" />
-											</div> 
-											<a href="#carousel" class="left carousel-control" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left"></span>
-											</a>
-											<a href="#carousel" class="right carousel-control" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right"></span>
-											</a>
-										</div>
-									</div>
-									<h2>January</h2>
-									<div id="event-info-1" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-										<h3>Thursday, January 26, 2017 from 7-9pm</h3>
-										<strong style="font-size:20px">All-Occasion Greeting Cards using Japanese Paper </strong>
-										<h4>Hosted by: Stampcraftlove (Fay) </h4>
-										<a href="www.kinkiloungekitchen.com" target="_blank" style="font-size:20px">Kinki Lounge & Kitchen</a>
-										<h4>41 York Street, Ottawa</h4>
-											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-											<input type="hidden" name="cmd" value="_s-xclick">
-											<input type="hidden" name="hosted_button_id" value="MUFRWWW7865FN">
-											<table>
-											<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-												<option value="1 Ticket">1 Ticket $25.00 CAD</option>
-												<option value="2 Tickets">2 Tickets $50.00 CAD</option>
-												<option value="3 Tickets">3 Tickets $75.00 CAD</option>
-												<option value="4 Tickets">4 Tickets $100.00 CAD</option>
-											</select> </td></tr>
-											<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-											</table>
-											<input type="hidden" name="currency_code" value="CAD">
-											<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-											<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-											</form>
+			<div class="row text-center">
+				<div class="section-heading">
+					<h2> Upcoming Events </h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<h2>Cardmaking</h2>
+					<div id="carousel" class="carousel slide" data-ride="carousel">
+						<!-- Menu -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel" data-slide-to="1"></li>
+							<li data-target="#carousel" data-slide-to="2"></li>
+							<li data-target="#carousel" data-slide-to="3"></li>
+							<li data-target="#carousel" data-slide-to="4"></li>
+						</ol>
+						
+						<!-- Items -->
+						<div class="carousel-inner" >
+							<div class="item active">
+								<img src="../img/DSC09845s.jpg" style="max-height:367px;width:555px" alt="Slide 2" />
+							</div>
+							<div class="item">
+								<img src="../img/DSC09688x.jpg" alt="Slide 2" />
+							</div>
+							<div class="item">
+								<img src="../img/DSC09671x.jpg" alt="Slide 3" />
+							</div>
+							<div class="item">
+								<img src="../img/DSC09923x.jpg" alt="Slide 4" />
+							</div>
+							<div class="item">
+								<img src="../img/DSC09939x.jpg" alt="Slide 5" />
+						</div> 
+						<a href="#carousel" class="left carousel-control" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a>
+						<a href="#carousel" class="right carousel-control" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
+				<h2>January</h2>
+				<div id="event-info-1" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>Thursday, January 26, 2017 from 7-9pm</h3>
+					<strong style="font-size:20px">All-Occasion Greeting Cards using Japanese Paper </strong>
+					<h4>Hosted by: Stampcraftlove (Fay) </h4>
+					<a href="www.kinkiloungekitchen.com" target="_blank" style="font-size:20px">Kinki Lounge & Kitchen</a>
+					<h4>41 York Street, Ottawa</h4>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="MUFRWWW7865FN">
+						<table>
+						<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
+							<option value="1 Ticket">1 Ticket $25.00 CAD</option>
+							<option value="2 Tickets">2 Tickets $50.00 CAD</option>
+							<option value="3 Tickets">3 Tickets $75.00 CAD</option>
+							<option value="4 Tickets">4 Tickets $100.00 CAD</option>
+						</select> </td></tr>
+						<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+						</table>
+						<input type="hidden" name="currency_code" value="CAD">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
 
-									</div>
-									<div id="event-info-2" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-										<h3>Sunday, January 29, 2017 from 7-9pm</h3>
-										<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
-										<h4>Hosted by: Stampcraftlove (Fay) </h4>
-									<a href="www.flapjacks.ca" target="_blank" style="font-size:20px">Flapjacks Canadian Dinner - Little Italy</a>
-										<h4>354A Preston Street, Ottawa</h4>
-										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-										<input type="hidden" name="cmd" value="_s-xclick">
-										<input type="hidden" name="hosted_button_id" value="HMXAX7RY6F8XA">
-										<table>
-										<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-											<option value="1 Ticket">1 Ticket $25.00 CAD</option>
-											<option value="2 Tickets">2 Tickets $50.00 CAD</option>
-											<option value="3 Tickets">3 Tickets $75.00 CAD</option>
-											<option value="4 Tickets">4 Tickets $100.00 CAD</option>
-										</select> </td></tr>
-										<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
-										</table>
-										<input type="hidden" name="currency_code" value="CAD">
-										<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-										<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-										</form>
+				</div>
+				<div id="event-info-2" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>Sunday, January 29, 2017 from 7-9pm</h3>
+					<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
+					<h4>Hosted by: Stampcraftlove (Fay) </h4>
+				<a href="www.flapjacks.ca" target="_blank" style="font-size:20px">Flapjacks Canadian Dinner - Little Italy</a>
+					<h4>354A Preston Street, Ottawa</h4>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="HMXAX7RY6F8XA">
+					<table>
+					<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
+						<option value="1 Ticket">1 Ticket $25.00 CAD</option>
+						<option value="2 Tickets">2 Tickets $50.00 CAD</option>
+						<option value="3 Tickets">3 Tickets $75.00 CAD</option>
+						<option value="4 Tickets">4 Tickets $100.00 CAD</option>
+					</select> </td></tr>
+					<tr><td><input type="hidden" name="on1" value="Coupon Code">Coupon Code</td></tr><tr><td><input type="text" name="os1" maxlength="200"></td></tr>
+					</table>
+					<input type="hidden" name="currency_code" value="CAD">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
 
-									</div>
-								
+				</div>
+			
 
 
-									<h2>February<h2>
-									<div id="event-info-3" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-										<h3>Wednesday, February 8th, 2017 from 7-9PM </h3>
-										<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
-										<h4>Hosted by: Stampcraftlove (Fay) </h4>
-										<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Maker House & Co (SPECIAL EVENT)</a>
-										<h4>987 Wellington Street West – Hintonburg</h4>
-									</div>
-									<div id="event-info-4" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-										<h3>Monday, February 27th, 2017 from 7-9PM </h3>
-										<strong style="font-size:20px">Handmade Juvenile Birthday Cards</strong>
-										<h4>Hosted by: Stampcraftlove (Fay) </h4>
-										<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Industria Italian Brasserie – Landsdowne Park</a>
-										<h4>225 Marche Way</h4>
-									</div>
+				<h2>February<h2>
+				<div id="event-info-3" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>Wednesday, February 8th, 2017 from 7-9PM </h3>
+					<strong style="font-size:20px">Valentines Day Card, Gift and Treat Box </strong>
+					<h4>Hosted by: Stampcraftlove (Fay) </h4>
+					<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Maker House & Co (SPECIAL EVENT)</a>
+					<h4>987 Wellington Street West – Hintonburg</h4>
+				</div>
+				<div id="event-info-4" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>Monday, February 27th, 2017 from 7-9PM </h3>
+					<strong style="font-size:20px">Handmade Juvenile Birthday Cards</strong>
+					<h4>Hosted by: Stampcraftlove (Fay) </h4>
+					<a href="www.makerhouse.com" target="_blank" style="font-size:20px">Industria Italian Brasserie – Landsdowne Park</a>
+					<h4>225 Marche Way</h4>
+				</div>
 
-										
-									
-								</div>
-									<div class="col-lg-6">
-										<h2>Jewellery Making</h2>
-										<div id="carousel_x" class="carousel slide" data-ride="carousel">
-											<!-- Menu -->
-											<ol class="carousel-indicators">
-												<li data-target="#carousel_x" data-slide-to="0" class="active"></li>
-												<li data-target="#carousel_x" data-slide-to="1"></li>
-											</ol>
-											
-											<!-- Items -->
-											<div class="carousel-inner" >
-												<div class="item active">
-													<img src="../img/_DSC2299.JPG"  alt="Slide 1" />
-												</div>
-												<div class="item">
-													<img src="../img/IMG_6783.JPG" style="max-height:367px;width:555px"  alt="Slide 2" />
-												</div>
-											<a href="#carousel_x" class="left carousel-control" data-slide="prev">
-												<span class="glyphicon glyphicon-chevron-left"></span>
-											</a>
-											<a href="#carousel_x" class="right carousel-control" data-slide="next">
-												<span class="glyphicon glyphicon-chevron-right"></span>
-											</a>
-										</div>
-									<h2>February 2017</h2>
-									<div id="event-info-5" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-										<h3>Sunday, February 19th, 2017 from 7-8:30PM </h3>
-										<strong style="font-size:20px">Gemstone Bracelets</strong>
-										<h4>Hosted by: Gemma By Design </h4>
-										<a href="www.thesavoybrasserie.com" target="_blank" style="font-size:20px">The Savoy Brasserie</a>
-										<h4>344 Richmond Road, Westboro</h4>
-											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-												<input type="hidden" name="cmd" value="_s-xclick">
-												<input type="hidden" name="hosted_button_id" value="JBDUTYWG3NYYQ">
-												<table>
-												<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
-													<option value="1 Ticket">1 Ticket $40.00 CAD</option>
-													<option value="2 Tickets">2 Tickets $80.00 CAD</option>
-													<option value="3 Tickets">3 Tickets $120.00 CAD</option>
-													<option value="4 Tickets">4 Tickets $160.00 CAD</option>
-												</select> </td></tr>
-												</table>
-												<input type="hidden" name="currency_code" value="CAD">
-												<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-												<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-											</form>
+					
+				
+			</div>
+				<div class="col-lg-6">
+					<h2>Jewellery Making</h2>
+					<div id="carousel_x" class="carousel slide" data-ride="carousel">
+						<!-- Menu -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel_x" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel_x" data-slide-to="1"></li>
+						</ol>
+						
+						<!-- Items -->
+						<div class="carousel-inner" >
+							<div class="item active">
+								<img src="../img/_DSC2299.JPG"  alt="Slide 1" />
+							</div>
+							<div class="item">
+								<img src="../img/IMG_6783.JPG" style="max-height:367px;width:555px"  alt="Slide 2" />
+							</div>
+						<a href="#carousel_x" class="left carousel-control" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a>
+						<a href="#carousel_x" class="right carousel-control" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				<h2>February 2017</h2>
+				<div id="event-info-5" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
+					<h3>Sunday, February 19th, 2017 from 7-8:30PM </h3>
+					<strong style="font-size:20px">Gemstone Bracelets</strong>
+					<h4>Hosted by: Gemma By Design </h4>
+					<a href="www.thesavoybrasserie.com" target="_blank" style="font-size:20px">The Savoy Brasserie</a>
+					<h4>344 Richmond Road, Westboro</h4>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="JBDUTYWG3NYYQ">
+							<table>
+							<tr><td><input type="hidden" name="on0" value="Number of Tickets">Number of Tickets</td></tr><tr><td><select name="os0">
+								<option value="1 Ticket">1 Ticket $40.00 CAD</option>
+								<option value="2 Tickets">2 Tickets $80.00 CAD</option>
+								<option value="3 Tickets">3 Tickets $120.00 CAD</option>
+								<option value="4 Tickets">4 Tickets $160.00 CAD</option>
+							</select> </td></tr>
+							</table>
+							<input type="hidden" name="currency_code" value="CAD">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
 
-									</div>
-									</div>
-								</div>
-								</div>
+				</div>
+				</div>
+			</div>
+			</div>
 
 	
-						{{/if}}
                         </div>
-			<div class="row">
-				<p>Refund Policy:
+			<div class="row-fluid">
+			<h2 class="text-center">Refund Policy</h2>
+			<p class="text-center">
 
-Please note that there are no refunds on ticket purchases and gift certificates.  Due to the nature of our events where seats are reserved, we are unable to move your registration to a different date. Instead, you are able to transfer your registration to another person for that date you are registered.\n
-Weather: We are unable to refund or transfer your registration to a different date due to weather conditions. Exception: Refunds will be issued and registration date transfers will be permitted only if the event is cancelled by Craft Night Out.</p>
+			Please note that there are no refunds on ticket purchases and gift certificates.  Due to the nature of our events where seats are reserved, we are unable to move your registration to a different date. Instead, you are able to transfer your registration to another person for that date you are registered.<br>
+			Weather: We are unable to refund or transfer your registration to a different date due to weather conditions. Exception: Refunds will be issued and registration date transfers will be permitted only if the event is cancelled by Craft Night Out.</p>
+			</div>
 			</div>
     </section>
     
@@ -353,16 +329,20 @@ Weather: We are unable to refund or transfer your registration to a different da
 				Craft Night Out (CNO) highlights the social aspect of crafting by combining creativity with friends, food and drinks at local restaurants.  Our events feature dynamic and out-going crafters/artisans who supply all necessary materials  to complete a craft project so you don’t have to!
 			</span> <br><br><br>
 			<spani style="font-size:25px">
-CNO started with my love of cutting, pasting and hosting parties. I hosted craft parties in my home with fancy apps and wine while friends worked a variety of craft projects that they brought themselves… Fun, right?! Actually, it was so fun that my craft night in soon became Craft Night Out! 
-			</span>
+CNO started with my love of cutting, pasting and hosting parties. I hosted craft parties in my home with fancy apps and wine while friends worked a variety of craft projects that they brought themselves… Fun, right?! Actually, it was so fun that my craft night in soon became Craft Night Out. Happy crafting!</span>
 		<br><br>	
 			<strong style="color:black;">
 				Fay McConnell<br> 
 				Creator and Owner<br>
 				Craft Night Out<br>
-				IG: @craft.night.out<br>
-				FB: @craftnightout.ca
-
+				IG: <a href="https://www.instagram.com/craft.night.out/">@craft.night.out</a><br>
+				FB: <a href="https://www.facebook.com/craftnightout.ca/">@craftnightout.ca</a>
+			</strong>
+			<hr>
+			<h2>Inquiries</h2>
+			<strong style="color:black;">
+				email: <a href="mailto:francesca@stampcraftlove.com?Subject=Craft%20Night%20Out%20Inquiry">francesca@stampcraftlove.com</a><hr>
+				phone: (613) 286-5605 - Weekdays: 4pm-9pm / Weekends: 8am-9pm
 			</strong>
         </div>
     </section>

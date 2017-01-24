@@ -5,12 +5,40 @@
 		<hr>
 		<form method="post" action="/admins/evts/create"> 
 		<input type="hidden" name="_csrf" value={{csrfToken}} />
-		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input>
+		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input><hr>
+		<input type="text" class="form-control" name="hostedBy" id="txtHostedBy" placeholder="Hosted By" required=true></input><hr>
+		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" required=true></input><hr>
+		<input type="text" class="form-control" name="instagram" id="txtInstagram" placeholder="Instagram Link" required=true></input>
 		<hr>
-		<textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription" rows="5"></textarea>
+
+		<div class='input-group date' id='datetimepicker1'>
+			<input type='text' placeholder="Event Date" id="txtDate" name="eventDate" class="form-control" />
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div><hr>
+
+
+		<input type="text" class="form-control" name="eventStartTime" id="txtStartTime" placeholder="Event Start Time" required=true></input><hr>
+		<input type="text" class="form-control" name="eventEndTime" id="txtEndTime" placeholder="Event Start Time" required=true></input><hr>
+		<div class="form-group">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"  name="isPrivate" id="txtPrivate"  required=true>Is Private
+				</label>
+			</div>
+		</div>
 		<hr>
+		<textarea name="description" placeholder="Event Description" class="form-control" id="txtDescription" rows="5"></textarea><hr>
+		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5"></textarea>
+		<hr>
+		<select class="form-control">
+			<option>Cardmaking</option>
+			<option>Jewellery</option>
+		</select><hr>
+		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true></input><hr>
 		<div id="locationField">
-		<input id="autocomplete" id="txtLocation" class="form-control" placeholder="Enter address" onInput="toggleSubmit()"  onFocus="geolocate()" type="text"></input>
+		<input id="autocomplete" id="txtLocation" class="form-control" name="address" placeholder="Enter address" onInput="toggleSubmit()"  onFocus="geolocate()" type="text"></input>
 		</div>
 		<hr>
 		<input type="text" name="lat" id="lat" style="display:none;"></input>
@@ -21,7 +49,7 @@
 
 	</div>
 
-	<div id="map" class="col-sm-7" style="width:55%;height:300px"></div>
+	<div id="map" class="col-sm-7" style="width:55%;height:800px"></div>
 </div>
 
 
@@ -197,6 +225,8 @@
           }
         });
       }
+	 var dtp = document.getElementById("datetimepicker1");
+	 dtp.datetimepicker();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete&initMap"
         async defer></script>
@@ -204,7 +234,6 @@
 <!--	<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initMap">
    </script> -->
-
 
 
 

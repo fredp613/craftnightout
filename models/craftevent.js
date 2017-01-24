@@ -4,14 +4,23 @@ import mongoose from "mongoose"
 
 let Schema = mongoose.Schema;
 
-
+//to do add array for images
 const CraftEvent = new mongoose.Schema({
 	title: String,
 	description: String,
+	hostedBy: String,
 	locationName: String,
+	locationAddress: String,
 	address: String,
-	date: Date,
+	eventDate: String,
+	eventStartTime: String,
+	eventEndTime: String,
 	totalTickets: String,
+	paypalButton: String,
+	isPrivate: Boolean,
+    facebook: String,
+	instagram: String,	
+	eventType: String,
 	lat: Number,
 	lng: Number
 });

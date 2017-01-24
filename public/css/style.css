@@ -25,6 +25,14 @@ overflow-x: hidden;
     color: #fdcc52;
 }
 
+footer {
+    background: #e0f2f7;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:60px;
+}
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
