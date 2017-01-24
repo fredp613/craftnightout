@@ -19,7 +19,6 @@ router.get('/evts/new', (req, res) => {
 
 //EDIT  EVENT
 router.get('/evts/edit/:id', (req, res) => {
-  
   res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars'});
 });
 
@@ -62,6 +61,23 @@ router.post('/evts/update', (req, res) => {
 			}
 			res.redirect('/evts');	
 		});
+	});
+});
+router.get('/evts/destroy/:id', (req, res) => {
+	let craftEventId = req.params.id;
+	CraftEvent.remove({_id:craftEventId}, function(err) {
+		if (!err) {
+			res.render('/evts',{
+				message: "Event not found",
+				layout: "admin.handlebars"
+			})
+		} else {
+			res.render('/evts',{
+				message: "Event Deleted",
+				layout: "admin.handlebars"
+			})
+		}
+
 	});
 });
 

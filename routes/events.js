@@ -24,9 +24,9 @@ router.get('/:id', (req, res) => {
   
   CraftEvent.findOne({"_id":req.params.id}, (err, doc)=>{
 		if (doc !== null) {
-  			res.render('events/detail', {layout:"other.handlebars", craftevent: doc });
+  			res.render('events/detail', {layout:"other.handlebars",eventDetail: doc });
 		} else {
-  			res.render('events/detail', {layout:"other.handlebars", craftevent: null });
+  			res.render('events/detail', {layout:"other.handlebars", eventDetail: null });
 
 		}
   })
