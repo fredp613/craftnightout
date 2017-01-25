@@ -6,6 +6,8 @@
 		<form method="post" action="/admins/evts/update"> 
 		<input type="hidden" name="_csrf" value={{csrfToken}} />
 		<input type="hidden" name="_id" value="{{craftevent._id}}" />
+		<input type="text" name="lat" id="lat" style="display:none;" value="{{craftevent.lat}}" />
+		<input type="text" name="lng" id="long" style="display:none;" value="{{craftevent.lng}}" />
 		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true value="{{craftevent.title}}" /><hr>
 		<input type="text" class="form-control" name="hostedBy" id="txtHostedBy" placeholder="Hosted By" required=true value="{{craftevent.hostedBy}}" /><hr>
 		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" value="{{craftevent.facebook}}" /><hr>
@@ -38,8 +40,14 @@
 		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5">{{craftevent.paypalButton}}</textarea>
 		<hr>
 		<select class="form-control" name="eventType">
-			<option value="Cardmaking">Cardmaking</option>
-			<option value="Jewellery">Jewellery</option>
+			{{#if isCardmaking}}
+				<option value="Cardmaking" selected>Cardmaking</option>
+				<option value="Jewellery">Jewellery</option>
+			{{else}}
+				<option value="Cardmaking">Cardmaking</option>
+				<option value="Jewellery" selected>Jewellery</option>
+
+			{{/if}}
 		</select><hr>
 		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true value="{{craftevent.locationName}}" /><hr>
 		<input type="text" class="form-control" name="locationWebsite" id="txtLocationName" placeholder="Location Website" value="{{craftevent.locationWebsite}}" /><hr>
@@ -47,8 +55,6 @@
 		<input id="autocomplete" id="txtLocation" class="form-control" name="address" placeholder="Enter address" onInput="toggleSubmit()"  type="text" value="{{craftevent.address}}" />
 		</div>
 		<hr>
-		<input type="text" name="lat" id="lat" style="display:none;" value="{{lat}}" />
-		<input type="text" name="lng" id="long" style="display:none;" value="{{lng}}" />
 		<input type="submit" class="btn btn-primary" id="submit" value='Save'></input>
 		</form>
 		<hr>

@@ -43,8 +43,11 @@ router.get('/evts/edit/:id', (req, res) => {
 				layout: "admin.handlebars"
 			})
 		} else {
-  		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), craftevent:doc});
-
+		let isCardmaking = false;
+		if (doc.eventType == "Cardmaking") {
+			isCardmaking = true;
+		}
+  			res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), craftevent:doc, isCardmaking: isCardmaking });
 		}
 	});
 

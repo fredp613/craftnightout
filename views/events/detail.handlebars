@@ -4,10 +4,10 @@
 	<input type="hidden" id="lng" value="{{eventDetail.lng}}" />
 	<div class="col-lg-4">
 		<div>
-			<h3><span class="evtDate">{{eventDetail.eventDate}}</span> - {{eventDetail.eventStartTime}} to {{eventDetail.eventEndTime}} </h3>
+			<h2>{{eventDetail.title}}</h2>
 		</div>
 		<div>
-			<h2>{{eventDetail.title}}</h2>
+			<h3><span class="evtDate">{{eventDetail.eventDate}}</span> - {{eventDetail.eventStartTime}} to {{eventDetail.eventEndTime}} </h3>
 		</div>
 		<div>
 			<h3>{{eventDetail.hostedBy}}</h3>
@@ -20,7 +20,7 @@
 		<p>{{eventDetail.instagram}}</p>
 		<div>
 			{{#if eventDetail.paypalButton}}
-				<div class="paypalBtnContainer" >
+				<div class="paypalBtnContainer" style="display:none;" >
 					<div class="paypalBtnItem">
 						{{eventDetail.paypalButton}}
 					</div>

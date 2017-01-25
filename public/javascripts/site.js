@@ -24,6 +24,7 @@
 			console.log($(this).text());
 			var btnForm = $.parseHTML($(this).text());
 			$(this).replaceWith(btnForm);
+			$(".paypalBtnContainer").show();
 		});
 	}
 	var dates = $(".evtDate");
