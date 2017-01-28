@@ -107,12 +107,16 @@ router.get('/evts/edit/:id', (req, res) => {
 				layout: "admin.handlebars"
 			})
 		} else {
-		let isCardmaking = false;
-		if (doc.eventType == "Cardmaking") {
-			isCardmaking = true;
-		}
-			let formattedDate = moment(doc.eventDate).format("YYYY-MM-DD");
-  			res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, isCardmaking: isCardmaking });
+			EventCategory.find({}, (err1, docs)=>{
+				let isCardmaking = false;
+				if (doc.eventType == "Cardmaking") {
+					isCardmaking = true;
+				}
+				let formattedDate = moment(doc.eventDate).format("YYYY-MM-DD");
+		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs,  isCardmaking: isCardmaking });
+			
+
+			});
 		}
 	});
 

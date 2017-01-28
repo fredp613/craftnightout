@@ -32,14 +32,9 @@
 		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5">{{craftevent.paypalButton}}</textarea>
 		<hr>
 		<select class="form-control" name="eventType">
-			{{#if isCardmaking}}
-				<option value="Cardmaking" selected>Cardmaking</option>
-				<option value="Jewellery">Jewellery</option>
-			{{else}}
-				<option value="Cardmaking">Cardmaking</option>
-				<option value="Jewellery" selected>Jewellery</option>
-
-			{{/if}}
+			{{#each eventCategories}}
+				<option value="{{name}}" class="eventTypeOpt" data-selected="{{../craftevent.eventType}}" >{{name}}</option>
+			{{/each}}
 		</select><hr>
 		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true value="{{craftevent.locationName}}" /><hr>
 		<input type="text" class="form-control" name="locationWebsite" id="txtLocationName" placeholder="Location Website" value="{{craftevent.locationWebsite}}" /><hr>

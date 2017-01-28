@@ -35,11 +35,16 @@
 		$(this).replaceWith(humanDate);
 
 	});
-	var formFieldDate = $(".evtInputDate");
-	console.log(formFieldDate.value);
-	var getDate = new Date(formFieldDate.val());
-	var utcDate = new Date(getDate.getUTCFullYear(), getDate.getUTCMonth(), getDate.getUTCDate());
-    console.log(utcDate);	
+	
+	var eventTypeOptions = $(".eventTypeOpt");
+	$.each(eventTypeOptions, function(o){
+		var option = $(this);
+		if (option.attr("data-selected") === option.val()) {
+			option.attr("selected", "selected");
+		} else {
+			option.removeAttr("selected")
+		}
+	});
 	
 
 })(jQuery); // End of use strict
