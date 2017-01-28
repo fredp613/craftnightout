@@ -82,13 +82,20 @@ router.get('/evts/destroy/:id', (req, res) => {
 
 router.get('/evts', (req, res) => {
 	
-  	CraftEvent.find({}, (err, docs)=>{
-		if (docs === null || docs === undefined) {
-		    res.render('admins/evts/index', { title: 'Events Admin Area', events: null, layout: "admin.handlebars"});
-		} else {
-			res.render('admins/evts/index', { title: 'Events Admin Area', events: docs, layout: "admin.handlebars"});
-		}
-	})
+  	//CraftEvent.find({}, (err, docs)=>{
+	//	if (docs === null || docs === undefined) {
+	//	    res.render('admins/evts/index', { title: 'Events Admin Area', events: null, layout: "admin.handlebars"});
+	//	} else {
+	//		res.render('admins/evts/index', { title: 'Events Admin Area', events: docs, layout: "admin.handlebars"});
+	//	}
+	//})
+	CraftEvent
+		.find({})
+		.sort({eventDate: 1})
+		.exec((err, docs)=>{
+		    res.render('admins/evts/index', { title: 'Events Admin Area', events: docs, layout: "admin.handlebars"});
+		});
+
 
 });
 

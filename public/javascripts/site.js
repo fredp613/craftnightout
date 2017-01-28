@@ -29,13 +29,12 @@
 	}
 	var dates = $(".evtDate");
 	$.each(dates, function(d){
-		var humanDate = moment($(this).text()).format('dddd MMMM Do YYYY')
+		var getDate = new Date($(this).text());
+		var utcDate = new Date(getDate.getUTCFullYear(), getDate.getUTCMonth(), getDate.getUTCDate());
+		var humanDate = moment(utcDate).format('dddd MMMM Do YYYY')
 		$(this).replaceWith(humanDate);
 
 	});
-	console.log($(".testing").text())	
-	console.log($(".testing").length)	
-	$(".testing").show();
 
 
 })(jQuery); // End of use strict

@@ -13,7 +13,7 @@ const CraftEvent = new mongoose.Schema({
 	locationAddress: String,
 	locationWebsite: String,
 	address: String,
-	eventDate: String,
+	eventDate:Date,
 	eventStartTime: String,
 	eventEndTime: String,
 	totalTickets: String,

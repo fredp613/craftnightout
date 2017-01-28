@@ -8,14 +8,16 @@ import { sendEmail } from '../helpers/email';
 /* GET home page. */
 router.get('/', function(req, res) {
 	CraftEvent
-		.find({eventType: "Cardmaking", isPrivate:null})
+		.find({eventType: "Cardmaking", isPrivate:null,eventDate: {$gt:Date.now()}})
 		.limit(4)
+		.sort({eventDate: 1})
 		.exec((err, docs)=>{
 			CraftEvent
-				.find({eventType: "Jewellery", isPrivate:null})
+				.find({eventType: "Jewellery", isPrivate:null, eventDate: {$gt:Date.now()}})
 				.limit(4)
+				.sort({eventDate: 1})
 				.exec((err1, docs1)=>{
-					res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',cardMakingEvents: docs, jewelleryEvents: docs1, csrfToken: req.csrfToken()});
+			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',cardMakingEvents: docs, jewelleryEvents: docs1, csrfToken: req.csrfToken()});
 
 				});
 		});
