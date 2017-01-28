@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-sm-5">
+		<strong>Edit Event</strong>
+		<hr>
+		<form method="post" action="/admins/eventcategories/update"> 
+			<input type="hidden" name="_csrf" value={{csrfToken}} />
+			<input type="hidden" name="_id" value="{{eventcategory._id}}" />
+			<input type="text" class="form-control" name="name" id="txtName" placeholder="Event Category Name" required=true value="{{eventcategory.name}}" /><hr>
+			<input type="submit" class="btn btn-primary" id="submit" value='Save'></input>
+		</form>
+		<hr>
+
+	</div>
+
+</div>
+

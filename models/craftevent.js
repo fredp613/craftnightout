@@ -1,6 +1,7 @@
 'use strict'
 
 import mongoose from "mongoose"
+import moment from "moment"
 
 let Schema = mongoose.Schema;
 
@@ -24,5 +25,10 @@ const CraftEvent = new mongoose.Schema({
 	eventType: String,
 	lat: Number,
 	lng: Number
+});
+CraftEvent.post('findOne', (result)=> {
+	let formattedDate = moment(result.eventDate).format("YYYY-MM-DD");
+	result.eventDate = formattedDate;
+	return result;
 });
 export default mongoose.model('CraftEvent', CraftEvent);

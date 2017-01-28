@@ -35,6 +35,11 @@
 		$(this).replaceWith(humanDate);
 
 	});
-
+	var formFieldDate = $(".evtInputDate");
+	console.log(formFieldDate.value);
+	var getDate = new Date(formFieldDate.val());
+	var utcDate = new Date(getDate.getUTCFullYear(), getDate.getUTCMonth(), getDate.getUTCDate());
+    console.log(utcDate);	
+	
 
 })(jQuery); // End of use strict

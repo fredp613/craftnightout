@@ -4,12 +4,76 @@ let express = require('express');
 let router = express.Router();
 
 import CraftEvent from '../models/craftevent';
+import EventCategory from '../models/eventcategory';
 import Subscriber from '../models/subscriber';
+import moment from "moment";
 
 
 /* GET ALL EVENTS - 20 per page. */
 router.get('/', (req, res) => {
-  res.render('admins/index', { layout: 'admin.handlebars', });
+  res.render('admins/index', { layout: 'admin.handlebars' });
+});
+
+router.get('/eventcategories', (req, res)=>{
+	EventCategory
+		.find({})
+		.exec((err, docs)=>{
+		    res.render('admins/eventcategories/index', { title: 'Event Categories', eventcategories: docs, layout: "admin.handlebars"});
+		});
+});
+router.get('/eventcategories/new', (req, res)=>{
+	res.render('admins/eventcategories/new', {title: "New Event Category", layout:"admin.handlebars",csrfToken: req.csrfToken()})
+});
+router.post('/eventcategories/create', (req, res) => {
+	console.log(req.body)
+	delete req.body["_csrf"];
+	let eventcategory = new EventCategory(req.body);	
+	eventcategory.save((err)=>{
+		if (err) {
+			res.render('admins/eventcategories/new', {title:"new event category", layout:"admin.handlebars", csrfToken: req.csrfToken()})
+		} else {
+			res.redirect('/admins/eventcategories');
+
+		}
+	});
+	
+
+});
+router.get('/eventcategories/edit/:id', (req, res) => {
+	EventCategory.findOne({_id:req.params.id}, (err, doc) => {
+		console.log(doc)
+		if (err) {
+			res.render('/eventcategories',{
+				message: "Event Category not found",
+				layout: "admin.handlebars"
+			})
+		} else {
+  			res.render('admins/eventcategories/edit', { title: 'Edit Event Category',layout:'admin.handlebars',csrfToken: req.csrfToken(),eventcategory:doc});
+		}
+	});
+
+});
+router.post('/eventcategories/update', (req, res) => {
+	delete req.body["_csrf"];
+	EventCategory.findOneAndUpdate({_id:req.body._id}, req.body, {upsert:false}, (err,doc)=>{
+		if (err) {
+			res.render('/eventcategories/edit/'+req.body._id,{
+				message: "something went wrong",
+				layout: "admin.handlebars"
+			})
+
+		} else {
+			res.redirect("/admins/eventcategories");
+		}
+	});	
+	
+});
+
+router.get('/eventcategories/destroy/:id', (req, res) => {
+	let eventCategoryId = req.params.id;
+	EventCategory.findOneAndRemove({_id:eventCategoryId}, function(err) {
+			res.redirect("/admins/eventcategories")
+	});
 });
 
 //NEW EVENT
@@ -23,7 +87,7 @@ router.post('/evts/create', (req, res) => {
 	let craftevent = new CraftEvent(req.body);	
 	craftevent.save((err)=>{
 		if (err) {
-			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars", csrfToken: csrfToken()})
+			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars", csrfToken: req.csrfToken()})
 		} else {
 			res.redirect('/admins/evts');
 
@@ -47,7 +111,8 @@ router.get('/evts/edit/:id', (req, res) => {
 		if (doc.eventType == "Cardmaking") {
 			isCardmaking = true;
 		}
-  			res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), craftevent:doc, isCardmaking: isCardmaking });
+			let formattedDate = moment(doc.eventDate).format("YYYY-MM-DD");
+  			res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, isCardmaking: isCardmaking });
 		}
 	});
 

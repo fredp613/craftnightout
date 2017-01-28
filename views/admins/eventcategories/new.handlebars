@@ -1,0 +1,16 @@
+<div class="row">
+	
+	<div class="col-sm-5">
+		<strong>New Event Category</strong>
+		<hr>
+		<form method="post" action="/admins/eventcategories/create"> 
+			<input type="hidden" name="_csrf" value={{csrfToken}} />
+			<input type="text" class="form-control" name="name" id="txtName" placeholder="Event Category Name" required=true></input><hr>
+			<input type="submit" class="btn btn-primary" id="submit" value='Publish'></input>
+		</form>
+		<hr>
+
+	</div>
+
+</div>
+

@@ -12,10 +12,7 @@
 		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" value="{{craftevent.facebook}}" /><hr>
 		<input type="text" class="form-control" name="instagram" id="txtInstagram" placeholder="Instagram Link" value="{{craftevent.instagram}}" />
 		<hr>
-		<div class='input-group date' id='datetimepicker1'>
-			<input type='date' placeholder="Event Date" id="txtDate" name="eventDate" class="form-control" value="{{craftevent.eventDate}}" />
-		</div><hr>
-
+		<input type='date' placeholder="Event Date" id="txtDate" name="eventDate" class="form-control evtInputDate" value={{formattedDate}} /><hr>
 
 		<input type="text" class="form-control" name="eventStartTime" id="txtStartTime" placeholder="Event Start Time" required=true value="{{craftevent.eventStartTime}}" /><hr>
 		<input type="text" class="form-control" name="eventEndTime" id="txtEndTime" placeholder="Event Start Time" required=true value="{{craftevent.eventEndTime}}" /><hr>
