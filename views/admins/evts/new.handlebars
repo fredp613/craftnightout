@@ -33,8 +33,9 @@
 		<textarea name="paypalButton" placeholder="Paypal Button" class="form-control" id="txtPaypalButton" rows="5"></textarea>
 		<hr>
 		<select class="form-control" name="eventType">
-			<option value="Cardmaking">Cardmaking</option>
-			<option value="Jewellery">Jewellery</option>
+			{{#each eventCategories}}
+				<option value="{{name}}" class="eventTypeOpt" data-selected="{{../craftevent.eventType}}" >{{name}}</option>
+			{{/each}}
 		</select><hr>
 		<input type="text" class="form-control" name="locationName" id="txtLocationName" placeholder="Location Name" required=true></input><hr>
 		<input type="text" class="form-control" name="locationWebsite" id="txtLocationName" placeholder="Location Website" ></input><hr>

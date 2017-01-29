@@ -7,13 +7,16 @@ import HostEvent from "../models/hostevent";
 import { sendEmail } from '../helpers/email';
 /* GET home page. */
 router.get('/', function(req, res) {
+	let d = new Date(Date.now());
+	let utcDate = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
+
 	CraftEvent
-		.find({eventType: "Cardmaking", isPrivate:null,eventDate: {$gt:Date.now()}})
+		.find({eventType: "Cardmaking", isPrivate:null,eventDate: {$gte: utcDate}})
 		.limit(4)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
 			CraftEvent
-				.find({eventType: "Jewellery", isPrivate:null, eventDate: {$gt:Date.now()}})
+				.find({eventType: "Jewellery", isPrivate:null, eventDate: {$gte: utcDate}})
 				.limit(4)
 				.sort({eventDate: 1})
 				.exec((err1, docs1)=>{

@@ -78,7 +78,10 @@ router.get('/eventcategories/destroy/:id', (req, res) => {
 
 //NEW EVENT
 router.get('/evts/new', (req, res) => {
-  res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', csrfToken: req.csrfToken()});
+	EventCategory.find({}, (err, docs) => {
+  		res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', eventCategories:docs, csrfToken: req.csrfToken()});
+
+	});
 });
 //CREATE EVENT
 router.post('/evts/create', (req, res) => {
