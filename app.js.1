@@ -24,12 +24,12 @@ dotenv.config();
 let csrfProtection = csrf({cookie: true});
 let parseForm = bodyParser.urlencoded({extended: false});
 
-
 mongoose.connect('mongodb://localhost/craft');
 
 if (app.get('env')=='production') {
 	app.set('trust proxy', 1);
 }
+
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
 //app.engine('handlebars', exphbs({defaultLayout: 'main'}));
