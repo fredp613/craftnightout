@@ -103,7 +103,11 @@ router.post('/evts/create', (req, res) => {
 //EDIT  EVENT
 router.get('/evts/edit/:id', (req, res) => {
 	CraftEvent.findOne({_id:req.params.id}, (err, doc) => {
-		console.log(doc)
+		let isoDate = doc.eventDate.toISOString();
+	    console.log(isoDate);	
+		let utcDate = new Date(doc.eventDate.getUTCFullYear(),doc.eventDate.getUTCMonth(),doc.eventDate.getUTCDate());
+		let formattedDate = moment(utcDate).add(1, 'days').format("YYYY-MM-DD");
+		console.log(isoDate);
 		if (err) {
 			res.render('/evts',{
 				message: "Event not found",
@@ -115,8 +119,8 @@ router.get('/evts/edit/:id', (req, res) => {
 				if (doc.eventType == "Cardmaking") {
 					isCardmaking = true;
 				}
-				let formattedDate = moment(new Date(doc.eventDate)).format("YYYY-MM-DD");
-		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs,  isCardmaking: isCardmaking });
+				console.log(formattedDate);
+		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs });
 			
 
 			});
