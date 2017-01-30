@@ -86,6 +86,9 @@ router.get('/evts/new', (req, res) => {
 //CREATE EVENT
 router.post('/evts/create', (req, res) => {
 	console.log(req.body)
+	if (!req.body.isPrivate) {
+		req.body.isPrivate = false;
+	}
 	delete req.body["_csrf"];
 	let craftevent = new CraftEvent(req.body);	
 	craftevent.save((err)=>{
@@ -115,11 +118,6 @@ router.get('/evts/edit/:id', (req, res) => {
 			})
 		} else {
 			EventCategory.find({}, (err1, docs)=>{
-				let isCardmaking = false;
-				if (doc.eventType == "Cardmaking") {
-					isCardmaking = true;
-				}
-				console.log(formattedDate);
 		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs });
 			
 
@@ -131,6 +129,9 @@ router.get('/evts/edit/:id', (req, res) => {
 //UPdate event
 router.post('/evts/update', (req, res) => {
 	console.log(req.body)
+	if (!req.body.isPrivate) {
+		req.body.isPrivate = false;
+	}
 	delete req.body["_csrf"];
 	CraftEvent.findOneAndUpdate({_id:req.body._id}, req.body, {upsert:false}, (err,doc)=>{
 		if (err) {
