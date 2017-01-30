@@ -115,7 +115,7 @@ router.get('/evts/edit/:id', (req, res) => {
 				if (doc.eventType == "Cardmaking") {
 					isCardmaking = true;
 				}
-				let formattedDate = moment(doc.eventDate).format("YYYY-MM-DD");
+				let formattedDate = moment(new Date(doc.eventDate)).format("YYYY-MM-DD");
 		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs,  isCardmaking: isCardmaking });
 			
 
