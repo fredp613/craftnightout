@@ -106,7 +106,7 @@ router.get('/evts/edit/:id', (req, res) => {
 		let isoDate = doc.eventDate.toISOString();
 	    console.log(isoDate);	
 		let utcDate = new Date(doc.eventDate.getUTCFullYear(),doc.eventDate.getUTCMonth(),doc.eventDate.getUTCDate());
-		let formattedDate = moment(utcDate).add(1, 'days').format("YYYY-MM-DD");
+		let formattedDate = moment(utcDate).format("YYYY-MM-DD");
 		console.log(isoDate);
 		if (err) {
 			res.render('/evts',{
