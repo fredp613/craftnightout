@@ -53,7 +53,7 @@
 
 
     <script>
-	  initMap();
+	  //initMap();
  	  function toggleSubmit() {
 		document.getElementById("submit").setAttribute("disabled", "disabled");
 	  }
@@ -149,11 +149,12 @@
 
 	}
 	 function initMap() {
-	    var lng = $("#long").val();
-	    var lat = $("#lat").val();
+	    var lng = document.getElementById("long").value; 
+	    var lat = document.getElementById("lat").value;
+		var latlng = new google.maps.LatLng(lat, lng);
     
 	    var map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat:lat , lng: lng},
+			  center: latlng,
 			  zoom: 15
         });
 		//var latLng = new google.maps.LatLng(-8.064903, -34.896872)
@@ -167,7 +168,7 @@
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             var marker = new google.maps.Marker({
               map: map,
-              position: place.geometry.location
+              position: latlng 
             });
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
@@ -179,6 +180,6 @@
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initAutocomplete&initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyEwU_KjjurmOf6p1MSa0blyhv7TlWH9c&libraries=places&callback=initMap&initAutocomplete"
         async defer></script>
 

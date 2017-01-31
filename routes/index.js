@@ -11,12 +11,12 @@ router.get('/', function(req, res) {
 	let utcDate = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
 
 	CraftEvent
-		.find({eventType: "Cardmaking", isPrivate:null,eventDate: {$gte: utcDate}})
+		.find({eventType: "Cardmaking", isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
 		.limit(4)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
 			CraftEvent
-				.find({eventType: "Jewellery", isPrivate:null, eventDate: {$gte: utcDate}})
+				.find({eventType: "Jewellery", isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
 				.limit(4)
 				.sort({eventDate: 1})
 				.exec((err1, docs1)=>{

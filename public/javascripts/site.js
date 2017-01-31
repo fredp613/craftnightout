@@ -1,6 +1,6 @@
 
 (function($) {
-
+console.log("wokring")
   $("#carousel").carousel();	
   $("#carousel_x").carousel();	
   $("#frmSubscribe").on("submit", function(e){
