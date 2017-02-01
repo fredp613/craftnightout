@@ -11,18 +11,11 @@ router.get('/', function(req, res) {
 	let utcDate = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
 
 	CraftEvent
-		.find({eventType: "Cardmaking", isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
+		.find({isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
 		.limit(4)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
-			CraftEvent
-				.find({eventType: "Jewellery", isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
-				.limit(4)
-				.sort({eventDate: 1})
-				.exec((err1, docs1)=>{
-			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',cardMakingEvents: docs, jewelleryEvents: docs1, csrfToken: req.csrfToken()});
-
-				});
+			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, csrfToken: req.csrfToken()});
 		});
 			
 });

@@ -12,6 +12,11 @@
 		<div>
 			<h3>{{eventDetail.hostedBy}}</h3>
 		</div>
+		{{#if eventDetail.description}}
+			<blockquote>
+				{{eventDetail.description}}
+			</blockquote>
+		{{/if}}
 		<div>
 			<h2>{{eventDetail.locationName}}</h2>
 			<h3>{{eventDetail.address}}</h3>

@@ -22,6 +22,11 @@
 					<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
 					<strong style="font-size:20px">{{title}} </strong>
 					<h4>{{hostedBy}} </h4>
+					{{#if description}}
+					<blockquote>
+						{{description}}
+					</blockquote>
+					{{/if}}
 					{{#if locationWebsite}}
 					<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
 					{{else}}
