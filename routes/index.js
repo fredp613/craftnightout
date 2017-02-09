@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 
 	CraftEvent
 		.find({isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
-		.limit(4)
+		.limit(10)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
 			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, csrfToken: req.csrfToken()});

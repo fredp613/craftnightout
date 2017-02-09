@@ -15,6 +15,6 @@ const HostEvent = new mongoose.Schema({
 	email: String,
 	phone: String,
 	comments: String,
-	type: String
+	type: String,
 });
 export default mongoose.model('HostEvent', HostEvent);
