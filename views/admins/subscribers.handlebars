@@ -12,15 +12,24 @@
 	</p>
 	<table class="table">
 		<thead>
-			<tr><th>Subscribers</th></tr>
+			<tr>
+				<th>Subscribers</th>
+				<th></th>
+			</tr>
 		</thead>
 		<tbody>
 			{{#each subscribers}}
-				<tr>
-					<td>{{email}}</td>
+				<tr id={{_id}}>
+					<td><a href="#" class="email" id={{_id}}>{{email}}</a></td>
+					<td><a href="/admins/subscribers/destroy/{{_id}}" class="btn btn-danger">Destroy</a><td>
 				</tr>
+				
 			{{/each}}
 		</tbody>
 	</table>
 {{/if}}
 </div>
+
+
+<script>
+</script>

@@ -1,6 +1,5 @@
 
 (function($) {
-console.log("wokring")
   $("#carousel").carousel();	
   $("#carousel_x").carousel();	
   $("#frmSubscribe").on("submit", function(e){
@@ -37,6 +36,7 @@ console.log("wokring")
 	});
 	
 	var eventTypeOptions = $(".eventTypeOpt");
+
 	$.each(eventTypeOptions, function(o){
 		var option = $(this);
 		if (option.attr("data-selected") === option.val()) {
@@ -44,6 +44,11 @@ console.log("wokring")
 		} else {
 			option.removeAttr("selected")
 		}
+	});
+	$(".email").on("click", function(e) {
+		var subId = e.target.id;
+		console.log(subId)
+		return false;
 	});
 	
 

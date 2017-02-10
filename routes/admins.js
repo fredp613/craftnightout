@@ -54,7 +54,8 @@ router.get('/eventcategories/edit/:id', (req, res) => {
 
 });
 router.post('/eventcategories/update', (req, res) => {
-	delete req.body["_csrf"];
+	
+delete req.body["_csrf"];
 	EventCategory.findOneAndUpdate({_id:req.body._id}, req.body, {upsert:false}, (err,doc)=>{
 		if (err) {
 			res.render('/eventcategories/edit/'+req.body._id,{
@@ -201,6 +202,17 @@ router.get('/subscribers', (req, res)=> {
 	})
 
 });
+router.get('/subscribers/destroy/:id', (req, res) => {
+	let subId = req.params.id;
+	Subscriber.findOneAndRemove({_id:subId}, function(err) {
+			res.redirect("/admins/subscribers")
+	});
+});
+//router.get('/subscribers/update/:id/:newEmail', (req, res) => {
+//	Subscriber.findOneAndUpdate({_id:req.params.id},{$set: {email:req.params.newEmail}}, {upsert:true}, (err) =>{
+//		res.redirect("/admins/subscribers");
+//	})
+//});
 
 
 
