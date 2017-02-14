@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start_old": "nodejs ./bin/www",
-	"start": "nodejs ./start.js"
+	"start": "nodejs ./start.js",
+	"startos": "node ./start.js"
   },
   "dependencies": {
     "babel": "^6.5.2",

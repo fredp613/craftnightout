@@ -9,15 +9,17 @@ import { sendEmail } from '../helpers/email';
 router.get('/', function(req, res) {
 	let d = new Date(Date.now());
 	let utcDate = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
-
 	CraftEvent
-		.find({isPrivate:null,isPrivate:false, eventDate: {$gte: utcDate}})
+		.find({isPrivate:null,isPrivate:false,eventType:"Cardmaking", eventDate: {$gte: utcDate}})
 		.limit(10)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
-			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, csrfToken: req.csrfToken()});
+			CraftEvent.find().distinct('eventType', (err, eventTypes)=> {
+					let sortedEvents = eventTypes.sort();
+					res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, eventTypes: sortedEvents,selectedEventType:"Cardmaking", csrfToken: req.csrfToken()});
+				
+			})
 		});
-			
 });
 
 router.post('/', function(req, res) {
