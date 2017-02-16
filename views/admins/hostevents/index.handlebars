@@ -1,0 +1,54 @@
+
+
+<div class="row-fluid">
+<hr>
+<hr>
+{{#if hostevents}}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Type</th>
+				<th>Created On</th>
+				<th>Actioned?</th>
+				<th>Actioned On</th>
+				<th><th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each hostevents}}
+				<tr id={{_id}} style="cursor:pointer">
+						{{#if title}}
+						<td><a href="/admins/hostevents/{{_id}}" >{{title}}</a></td>
+						{{else}}
+						<td><a href="/admins/hostevents/{{_id}}" >No Title</a></td>
+						{{/if}}
+						{{#if name}}
+						<td><a href="/admins/hostevents/{{_id}}" >{{name}}</a></td>
+						{{else}}
+						<td><a href="/admins/hostevents/{{_id}}" >No Name</a></td>
+						{{/if}}
+						<td><a href="/admins/hostevents/{{_id}}" >{{email}}</a></td>
+						<td><a href="/admins/hostevents/{{_id}}" >{{type}}</a></td>
+						<td><a href="/admins/hostevents/{{_id}}" >{{createdOn}}</a></td>
+						{{#if actioned}}
+						<td><a href="/admins/hostevents/{{_id}}" >Yes</a></td>
+						{{else}}
+						<td><a href="/admins/hostevents/{{_id}}" >No</a></td>
+						{{/if}}
+						<td><a href="/admins/hostevents/{{_id}}" >{{actionedOn}}</a></td>
+		
+						<td><a href="/admins/hostevents/{{_id}}" class="btn btn-info" >View Details</a></td>
+				</tr>
+				
+			{{/each}}
+		</tbody>
+	</table>
+{{/if}}
+</div>
+
+
+<script>
+</script>

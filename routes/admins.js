@@ -6,6 +6,7 @@ let router = express.Router();
 import CraftEvent from '../models/craftevent';
 import EventCategory from '../models/eventcategory';
 import Subscriber from '../models/subscriber';
+import HostEvent from '../models/hostevent';
 import moment from "moment";
 
 
@@ -213,12 +214,68 @@ router.get('/subscribers/destroy/:id', (req, res) => {
 //		res.redirect("/admins/subscribers");
 //	})
 //});
+router.get('/staging', (req, res) => {
+	let d = new Date(Date.now());
+	let utcDate = new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
+	CraftEvent
+		.find({isPrivate:null,isPrivate:false,eventType:"Cardmaking", eventDate: {$gte: utcDate}})
+		.limit(10)
+		.sort({eventDate: 1})
+		.exec((err, docs)=>{
+			CraftEvent.find().distinct('eventType', (err, eventTypes)=> {
+					let sortedEvents = eventTypes.sort();
+					res.render('admins/staging', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, eventTypes: sortedEvents,selectedEventType:"Cardmaking", csrfToken: req.csrfToken()});
+				
+			})
+		});
+});
 
+router.get('/hostevents', (req, res)=> {
+	HostEvent.find({}, (err, docs)=>{
+		res.render('admins/hostevents/index', { title: 'Host events Admin Area', hostevents: docs, layout: "admin.handlebars"});
+	})
 
+});
+router.get('/hostevents/:id', (req, res) => {
+console.log("MEEEEEEEEE")
+  HostEvent.findOne({"_id":req.params.id}, (err, doc)=>{
+		if (err) {
+			return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars",csrfToken: req.csrfToken() });
+		} else {
+			if (doc === null || doc === undefined) {
+				return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars",csrfToken: req.csrfToken()});
+			} else {
+				if (doc.actioned) {
+				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:false, layout: "admin.handlebars",csrfToken: req.csrfToken()});
 
+				}
+				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:true, layout: "admin.handlebars",csrfToken: req.csrfToken()});
 
+			}
+		}
+  }) 
+  
+});
+router.post('/hostevents/update', (req, res) => {
+	
+delete req.body["_csrf"];
+	let hostEvent = req.body;
+	//hostEvent.actionedOn = Date();
+	hostEvent.actioned = true;
+	console.log(hostEvent);
+	HostEvent.findOneAndUpdate({_id:req.body._id}, hostEvent, {upsert:false}, (err,doc)=>{
+		if (err) {
+			res.render('/hostevents/'+req.body._id,{
+				message: "something went wrong",
+				layout: "admin.handlebars"
+			})
 
-
+		} else {
+			res.redirect("/admins/hostevents");
+		}
+	});	
+	
+});
 
 
 

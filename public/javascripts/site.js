@@ -50,6 +50,13 @@
 		console.log(subId)
 		return false;
 	});
+	$(".eventType").on("click", function(e) {
+		var eventTypeHeader = $(".eventTypeHeader");
+		eventTypeHeader.text($(this).text());
+		return false;
+	});
+
+	
 	
 
 })(jQuery); // End of use strict

@@ -1,0 +1,28 @@
+<div class="row" style="margin:20px">
+<div class="col-lg-6 ">
+<a href="/admins/hostevents" class="btn btn-info">Back</a>
+<h3 class="text-center">Host Event Request Information<h3>
+<form id="frmHost" method="post" action="/admins/hostevents/update"  class="form-vertical">
+	<div style="pointer-events:none;">
+		<input type="hidden" name="_csrf" value={{csrfToken}} />
+		<input type="hidden" name="_id" value={{detail._id}} />
+		Title<input type="text" id="txtName" 
+				class="form-control input-lg" name="title" value={{detail.title}}  /><hr>
+		Address<input type="text" id="txtAddress" 
+				class="form-control input-lg" name="address" value={{detail.address}}  /><hr>
+		Website<input type="text" id="txtWebsite" 
+				class="form-control input-lg" name="website" value={{detail.website}}  /><hr>
+		Email<input type="email" id="txtEmail" 
+				class="form-control input-lg" name="email" value={{detail.email}}  /><hr>
+		Phone<input type="text" id="txtPhone" 
+				class="form-control input-lg" name="phone"  value={{detail.phone}}  /><hr>
+Number of Guests<input type="number" id="txtNumGuests" class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests"  value={{detail.guests}} /><hr>
+		Type<input type="text" class="form-control input-lg" id="txtType"  name="type" value={{detail.type}} /><hr>
+		Comments<textarea id="txtComments" class="form-control input-lg"  name="comments" rows=6>{{detail.comments}}</textarea><hr>
+	</div>
+    {{#if actionRequired}}	
+	<input type="submit" id="btnSubmit"  class="btn btn-success" 
+		value="Actioned" />
+	{{/if}}
+</form>
+</div>

@@ -15,6 +15,10 @@ const HostEvent = new mongoose.Schema({
 	email: String,
 	phone: String,
 	comments: String,
+	guests: String,
 	type: String,
+	actioned: Boolean,
+	createdOn:Date,
+	actionedOn:Date,
 });
 export default mongoose.model('HostEvent', HostEvent);

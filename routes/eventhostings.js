@@ -21,6 +21,7 @@ router.get('/new/:type', (req, res)=>{
 })
 router.post('/create', function(req, res) {
 	let hostevent = new HostEvent(req.body);	
+	hostevent.createdOn = Date();
 	hostevent.save((err)=>{
 		if (err) {
 			res.render('eventhostings/new', {title: "Host an Event",layout:'other.handlebars', privateEvent:true,csrfToken: req.csrfToken()});
