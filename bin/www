@@ -2,7 +2,11 @@
 var debug = require('debug')('my-application');
 var app = require('../app');
 
-app.set('port', process.env.PORT || 3000);
+if (app.get('env')=="fred") {
+	app.set('port', process.env.PORT || 3003);
+} else {
+	app.set('port', process.env.PORT || 3000);
+}
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
