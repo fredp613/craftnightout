@@ -3,3 +3,4 @@ node_modules
 tags
 *.swp
 npm-debug.log
+/build

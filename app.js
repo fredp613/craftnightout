@@ -24,12 +24,12 @@ dotenv.config();
 let csrfProtection = csrf({cookie: true});
 let parseForm = bodyParser.urlencoded({extended: false});
 
-//if (app.get("env")=="development") {
-//	mongoose.connect('mongodb://localhost/craft_dev');
-//} else {
-	mongoose.connect('mongodb://localhost/craft');
+if (app.get("env")=="dev") {
+	mongoose.connect('mongodb://localhost/craft_dev');
+} else {
+  mongoose.connect('mongodb://localhost/craft');
 
-//}
+}
 
 if (app.get('env')=='production') {
 	app.set('trust proxy', 1);
