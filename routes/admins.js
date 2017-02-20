@@ -23,7 +23,7 @@ router.get('/eventcategories', (req, res)=>{
 		});
 });
 router.get('/eventcategories/new', (req, res)=>{
-	res.render('admins/eventcategories/new', {title: "New Event Category", layout:"admin.handlebars",csrfToken: req.csrfToken()})
+	res.render('admins/eventcategories/new', {title: "New Event Category", layout:"admin.handlebars"/**csrfToken: req.csrfToken()**/})
 });
 router.post('/eventcategories/create', (req, res) => {
 	console.log(req.body)
@@ -32,7 +32,7 @@ router.post('/eventcategories/create', (req, res) => {
 	
 	eventcategory.save((err)=>{
 		if (err) {
-			res.render('admins/eventcategories/new', {title:"new event category", layout:"admin.handlebars", csrfToken: req.csrfToken()})
+			res.render('admins/eventcategories/new', {title:"new event category", layout:"admin.handlebars"/**csrfToken: req.csrfToken()**/})
 		} else {
 			res.redirect('/admins/eventcategories');
 
@@ -50,7 +50,7 @@ router.get('/eventcategories/edit/:id', (req, res) => {
 				layout: "admin.handlebars"
 			})
 		} else {
-  			res.render('admins/eventcategories/edit', { title: 'Edit Event Category',layout:'admin.handlebars',csrfToken: req.csrfToken(),eventcategory:doc});
+  			res.render('admins/eventcategories/edit', { title: 'Edit Event Category',layout:'admin.handlebars'/**,csrfToken: req.csrfToken()**/,eventcategory:doc});
 		}
 	});
 
@@ -82,7 +82,7 @@ router.get('/eventcategories/destroy/:id', (req, res) => {
 //NEW EVENT
 router.get('/evts/new', (req, res) => {
 	EventCategory.find({}, (err, docs) => {
-  		res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', eventCategories:docs, /**csrfToken: req.csrfToken()**/});
+  		res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', eventCategories:docs /**csrfToken: req.csrfToken()**/});
 
 	});
 });
@@ -96,12 +96,15 @@ router.post('/evts/create', (req, res) => {
 		req.body.isPrivate = false;
 	}
 	//delete req.body["_csrf"];
-	console.log(req.body)
-	console.log(req.files);
+	console.log(req.body);
+	console.log(req.file);
+	console.log(req.file.filename);
 	let craftevent = new CraftEvent(req.body);	
+	craftevent.imgId = req.file.filename.toString();
+	//craftevent.imgId = req.file.filename;
 	craftevent.save((err)=>{
 		if (err) {
-			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars", csrfToken: req.csrfToken()})
+			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars" /**csrfToken: req.csrfToken()**/})
 		} else {
 			res.redirect('/admins/evts');
 
@@ -126,8 +129,7 @@ router.get('/evts/edit/:id', (req, res) => {
 			})
 		} else {
 			EventCategory.find({}, (err1, docs)=>{
-		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',csrfToken: req.csrfToken(), formattedDate: formattedDate, craftevent:doc, eventCategories: docs });
-			
+		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',/**csrfToken: req.csrfToken()**/ formattedDate: formattedDate, craftevent:doc, eventCategories: docs });
 
 			});
 		}
@@ -141,7 +143,12 @@ router.post('/evts/update', (req, res) => {
 		req.body.isPrivate = false;
 	}
 	delete req.body["_csrf"];
-	CraftEvent.findOneAndUpdate({_id:req.body._id}, req.body, {upsert:false}, (err,doc)=>{
+	console.log(req.body);
+	console.log(req.file);
+	console.log(req.file.filename);
+	let craftevent = req.body;
+	craftevent.imgId = req.file.filename;
+	CraftEvent.findOneAndUpdate({_id:req.body._id}, craftevent, {upsert:false}, (err,doc)=>{
 		if (err) {
 			res.render('/evts/edit/'+req.body._id,{
 				message: "something went wrong",
@@ -230,7 +237,7 @@ router.get('/staging', (req, res) => {
 		.exec((err, docs)=>{
 			CraftEvent.find().distinct('eventType', (err, eventTypes)=> {
 					let sortedEvents = eventTypes.sort();
-					res.render('admins/staging', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, eventTypes: sortedEvents,selectedEventType:"Cardmaking", csrfToken: req.csrfToken()});
+					res.render('admins/staging', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, eventTypes: sortedEvents,selectedEventType:"Cardmaking"/**, csrfToken: req.csrfToken()**/});
 				
 			})
 		});
@@ -246,16 +253,16 @@ router.get('/hostevents/:id', (req, res) => {
 console.log("MEEEEEEEEE")
   HostEvent.findOne({"_id":req.params.id}, (err, doc)=>{
 		if (err) {
-			return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars",csrfToken: req.csrfToken() });
+			return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/ });
 		} else {
 			if (doc === null || doc === undefined) {
-				return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars",csrfToken: req.csrfToken()});
+				return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/});
 			} else {
 				if (doc.actioned) {
-				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:false, layout: "admin.handlebars",csrfToken: req.csrfToken()});
+				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:false, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/});
 
 				}
-				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:true, layout: "admin.handlebars",csrfToken: req.csrfToken()});
+				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:true, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/});
 
 			}
 		}

@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 		.limit(10)
 		.sort({eventDate: 1})
 		.exec((err, docs)=>{
-			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs, csrfToken: req.csrfToken()});
+			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars',events:docs /**csrfToken: req.csrfToken()**/});
 		});
 			
 });
@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
 	let hostevent = new HostEvent(req.body);	
 	hostevent.save((err)=>{
 		if (err) {
-			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars', featuredEvents: docs, csrfToken: req.csrfToken()});
+			res.render('index', { title: 'Craft Night Out',layout:'main.handlebars', featuredEvents: docs /**csrfToken: req.csrfToken()**/});
 		} else {
 			res.redirect("/");
 		}

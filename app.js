@@ -27,9 +27,11 @@ let csrfProtection = csrf({cookie: true});
 app.use(bodyParser.urlencoded({ extended: false}))
 
 
-if (app.get("env")=="dev") {
+if (app.get("env")=="fred") {
+console.log("connected to DEV db")
 	mongoose.connect('mongodb://localhost/craft_dev');
 } else {
+console.log("connected to PORD db")
   mongoose.connect('mongodb://localhost/craft');
 
 }
