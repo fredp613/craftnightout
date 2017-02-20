@@ -96,7 +96,9 @@ router.post('/evts/create', (req, res) => {
 		req.body.isPrivate = false;
 	}
 	let craftevent = new CraftEvent(req.body);	
-	craftevent.imgId = req.file.filename.toString();
+	if (req.file) {
+		craftevent.imgId = req.file.filename.toString();
+	}
 	craftevent.save((err)=>{
 		if (err) {
 			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars" /**csrfToken: req.csrfToken()**/})
@@ -134,7 +136,9 @@ router.post('/evts/update', (req, res) => {
 		req.body.isPrivate = false;
 	}
 	let craftevent = req.body;
-	craftevent.imgId = req.file.filename.toString();
+	if (req.file) {
+		craftevent.imgId = req.file.filename.toString();
+	}
 	CraftEvent.findOneAndUpdate({_id:req.body._id}, craftevent, {upsert:false}, (err,doc)=>{
 		if (err) {
 			res.render('/evts/edit/'+req.body._id,{
