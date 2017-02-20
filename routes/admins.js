@@ -29,6 +29,7 @@ router.post('/eventcategories/create', (req, res) => {
 	console.log(req.body)
 	delete req.body["_csrf"];
 	let eventcategory = new EventCategory(req.body);	
+	
 	eventcategory.save((err)=>{
 		if (err) {
 			res.render('admins/eventcategories/new', {title:"new event category", layout:"admin.handlebars", csrfToken: req.csrfToken()})
@@ -81,17 +82,22 @@ router.get('/eventcategories/destroy/:id', (req, res) => {
 //NEW EVENT
 router.get('/evts/new', (req, res) => {
 	EventCategory.find({}, (err, docs) => {
-  		res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', eventCategories:docs, csrfToken: req.csrfToken()});
+  		res.render('admins/evts/new', { title: 'New Event', layout: 'admin.handlebars', eventCategories:docs, /**csrfToken: req.csrfToken()**/});
 
 	});
 });
+//let upload = multer({
+//	dest: "./user_images",
+//});
+
 //CREATE EVENT
 router.post('/evts/create', (req, res) => {
-	console.log(req.body)
 	if (!req.body.isPrivate) {
 		req.body.isPrivate = false;
 	}
-	delete req.body["_csrf"];
+	//delete req.body["_csrf"];
+	console.log(req.body)
+	console.log(req.files);
 	let craftevent = new CraftEvent(req.body);	
 	craftevent.save((err)=>{
 		if (err) {

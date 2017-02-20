@@ -116,8 +116,6 @@
 					</div>
 				</div>
     </header>
-
-
     <section id="events" class="features">
         <div class="container">
 			<div class="row text-center">
@@ -125,24 +123,27 @@
 					<h2> Upcoming Events </h2>
 				</div>
 			</div>
-			<div class="row">
 				{{#each events}}
-						<div class="col-md-4">
-							<img src="http://placehold.it/350x150" alt="placholder">
+			<div class="row">
+						<div class="col-lg-4" >
+							<img src="feb_23.jpg" class="img-responsive">
 						</div>
-						<div class="col-md-8" style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-							<span id="eventDate" style="display:none;">{{eventDate}}</span>
+						<div class="col-lg-5"  >
 							<a href="/events/{{_id}}">
 								<h2>{{title}}</h2>
 								<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
 							</a>
 								<strong style="font-size:20px">Event type: {{eventType}} </strong>
 							<h4>Hosted By: {{hostedBy}} </h4>
+							<div style="max-height:140px;text-overflow:ellipsis;overflow-y:scroll">
 							{{#if description}}
 							<blockquote>
 								{{description}}
 							</blockquote>
 							{{/if}}
+							</div>
+						</div>
+						<div class="col-lg-3">
 							{{#if locationWebsite}}
 							<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
 							{{else}}
@@ -156,15 +157,15 @@
 									</div>
 								</div>
 							{{/if}}
+						
 						</div>
+			</div><hr>
+						<div class="clearfix"></div>
 				{{/each}}
 
-					
-				
-			</div>
 
 	
-			<div class="row-fluid">
+			<div class="row">
 			<h2 class="text-center">Refund Policy</h2>
 			<p class="text-center">
 

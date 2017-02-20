@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 import 'babel-polyfill'
 
 //var exphbs = require('express-handlebars')
+import multer from "multer";
 import csrf from 'csurf';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -22,7 +23,9 @@ var home = require('./routes/index');
 var app = express();
 dotenv.config();
 let csrfProtection = csrf({cookie: true});
-let parseForm = bodyParser.urlencoded({extended: false});
+//let parseForm = bodyParser.urlencoded({extended: false});
+app.use(bodyParser.urlencoded({ extended: false}))
+
 
 if (app.get("env")=="dev") {
 	mongoose.connect('mongodb://localhost/craft_dev');
@@ -58,7 +61,13 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'vendor')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(csrfProtection);
+app.use(express.static(path.join(__dirname, 'user_images')));
+//app.use(multer({
+//	dest:"./user_images"
+//}))
+app.use(multer({dest: './user_images'}).single('imgId')); //Beware, you need to match .single() with whatever name="" of your file upload field in html
+//app.use(csrfProtection);
+
 
 let customOpenPaths = ["events", "osubscribers", "eventhostings"]
 

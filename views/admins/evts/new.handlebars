@@ -3,8 +3,8 @@
 	<div class="col-sm-5">
 		<strong>New Event</strong>
 		<hr>
-		<form method="post" action="/admins/evts/create"> 
-		<input type="hidden" name="_csrf" value={{csrfToken}} />
+		<form method="post" action="/admins/evts/create" enctype="multipart/form-data"> 
+		<!--<input type="hidden" name="_csrf" value={{csrfToken}} /> -->
 		<input type="text" class="form-control" name="title" id="txtTitle" placeholder="Event Title" required=true></input><hr>
 		<input type="text" class="form-control" name="hostedBy" id="txtHostedBy" placeholder="Hosted By" required=true></input><hr>
 		<input type="text" class="form-control" name="facebook" id="txtFacebook" placeholder="Facebook Link" ></input><hr>
@@ -37,6 +37,9 @@
 		<hr>
 		<input type="text" name="lat" id="lat" style="display:none;"></input>
 		<input type="text" name="lng" id="long" style="display:none;"></input>
+		<label class="btn btn-default btn-file">
+			<input type="file" name="imgId" >
+		</label>
 		<input type="submit" disabled class="btn btn-primary" id="submit" value='Publish'></input>
 		</form>
 		<hr>

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start_old": "nodejs ./bin/www",
-	"start": "nodejs ./start.js"
+    "start": "nodejs ./start.js"
   },
   "dependencies": {
     "babel": "^6.5.2",
@@ -25,6 +25,7 @@
     "moment": "^2.17.1",
     "mongoose": "^4.7.0",
     "morgan": "~1.0.0",
+    "multer": "^1.3.0",
     "nodemailer": "^2.6.4",
     "static-favicon": "~1.0.0"
   },

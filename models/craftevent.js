@@ -23,6 +23,7 @@ const CraftEvent = new mongoose.Schema({
     facebook: String,
 	instagram: String,	
 	eventType: String,
+	imgId: String,
 	lat: Number,
 	lng: Number
 });
