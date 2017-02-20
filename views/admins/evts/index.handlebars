@@ -13,43 +13,51 @@
 					</div>
 				</div>
 		{{#each events}}
-				<div style="margin:10px;border-style:solid;border-width:0.1px;padding:5px;border-color:grey">
-					{{#if imgId}}
-					<h2>IMAGE EXISTS</h2>
-						<div class="col-lg-4">
-							<img src="{{imgId}}.jpg" class="img-responsive">
+			<div class="row">
+						{{#if imgId}}
+						<div class="col-lg-4" >
+							<img src="../{{imgId}}" class="img-responsive">
 						</div>
-					{{/if}}
-					{{#if isPrivate}}
-						<h2>PRIVATE EVENT</h2>
-					{{/if}}
-					<span id="eventDate" style="display:none;">{{eventDate}}</span>
-	
-					<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
-					<strong style="font-size:20px">{{title}} </strong>
-					<h4>{{hostedBy}} </h4>
-					{{#if description}}
-					<blockquote>
-						{{description}}
-					</blockquote>
-					{{/if}}
-					{{#if locationWebsite}}
-					<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
-					{{else}}
-					<span style="font-size:20px">{{locationName}}</span>
-					{{/if}}
-					<h4>{{address}}</h4>
-					{{#if paypalButton}}
-						<div class="paypalBtnContainer" >
-							<div class="paypalBtnItem">
-								{{paypalButton}}
+						{{/if}}
+						<div class="col-lg-5"  >
+							<a href="/admins/evts/edit/{{_id}}" class="btn btn-info">Edit</a>
+							<a href="/admins/evts/destroy/{{_id}}" class="btn btn-danger">Destroy</a>
+							{{#if isPrivate}}
+								<h2>PRIVATE EVENT</h2>
+							{{/if}}
+							<a href="/events/{{_id}}">
+								<h2>{{title}}</h2>
+								<h3><span class="evtDate">{{eventDate}}</span> - {{eventStartTime}} to {{eventEndTime}} </h3>
+							</a>
+								<strong style="font-size:20px">Event type: {{eventType}} </strong>
+							<h4>Hosted By: {{hostedBy}} </h4>
+							<div style="max-height:140px;text-overflow:ellipsis;overflow-y:scroll">
+							{{#if description}}
+							<blockquote>
+								{{description}}
+							</blockquote>
+							{{/if}}
 							</div>
+							<h3>Share: https://craftnightout.ca/events/{{_id}}</h3>
 						</div>
-					{{/if}}
-					<a href="/admins/evts/edit/{{_id}}" class="btn btn-info">Edit</a>
-					<a href="/admins/evts/destroy/{{_id}}" class="btn btn-danger">Destroy</a>
-					<h3>Share: https://craftnightout.ca/events/{{_id}}</h3>
-				</div>
+						<div class="col-lg-3">
+							{{#if locationWebsite}}
+							<a href={{locationWebsite}} target="_blank" style="font-size:20px">{{locationName}}</a>
+							{{else}}
+							<span style="font-size:20px">{{locationName}}</span>
+							{{/if}}
+							<h4>{{address}}</h4>
+							{{#if paypalButton}}
+								<div class="paypalBtnContainer" style="display:none;" >
+									<div class="paypalBtnItem">
+										{{paypalButton}}
+									</div>
+								</div>
+							{{/if}}
+						
+						</div>
+			</div><hr>
+						<div class="clearfix"></div>
 		{{/each}}
 	{{/if}}
 </section>

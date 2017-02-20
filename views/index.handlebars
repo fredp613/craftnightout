@@ -125,9 +125,11 @@
 			</div>
 				{{#each events}}
 			<div class="row">
+						{{#if imgId}}
 						<div class="col-lg-4" >
-							<img src="feb_23.jpg" class="img-responsive">
+							<img src="{{imgId}}" class="img-responsive">
 						</div>
+						{{/if}}
 						<div class="col-lg-5"  >
 							<a href="/events/{{_id}}">
 								<h2>{{title}}</h2>

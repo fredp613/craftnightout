@@ -95,19 +95,13 @@ router.post('/evts/create', (req, res) => {
 	if (!req.body.isPrivate) {
 		req.body.isPrivate = false;
 	}
-	//delete req.body["_csrf"];
-	console.log(req.body);
-	console.log(req.file);
-	console.log(req.file.filename);
 	let craftevent = new CraftEvent(req.body);	
 	craftevent.imgId = req.file.filename.toString();
-	//craftevent.imgId = req.file.filename;
 	craftevent.save((err)=>{
 		if (err) {
 			res.render('admins/evts/new', {title:"new event", layout:"admin.handlebars" /**csrfToken: req.csrfToken()**/})
 		} else {
 			res.redirect('/admins/evts');
-
 		}
 	});
 	
@@ -130,31 +124,23 @@ router.get('/evts/edit/:id', (req, res) => {
 		} else {
 			EventCategory.find({}, (err1, docs)=>{
 		res.render('admins/evts/edit', { title: 'Edit Event',layout:'admin.handlebars',/**csrfToken: req.csrfToken()**/ formattedDate: formattedDate, craftevent:doc, eventCategories: docs });
-
 			});
 		}
 	});
-
 });
 //UPdate event
 router.post('/evts/update', (req, res) => {
-	console.log(req.body)
 	if (!req.body.isPrivate) {
 		req.body.isPrivate = false;
 	}
-	delete req.body["_csrf"];
-	console.log(req.body);
-	console.log(req.file);
-	console.log(req.file.filename);
 	let craftevent = req.body;
-	craftevent.imgId = req.file.filename;
+	craftevent.imgId = req.file.filename.toString();
 	CraftEvent.findOneAndUpdate({_id:req.body._id}, craftevent, {upsert:false}, (err,doc)=>{
 		if (err) {
 			res.render('/evts/edit/'+req.body._id,{
 				message: "something went wrong",
 				layout: "admin.handlebars"
 			})
-
 		} else {
 			res.redirect("/admins/evts");
 		}
@@ -250,7 +236,6 @@ router.get('/hostevents', (req, res)=> {
 
 });
 router.get('/hostevents/:id', (req, res) => {
-console.log("MEEEEEEEEE")
   HostEvent.findOne({"_id":req.params.id}, (err, doc)=>{
 		if (err) {
 			return res.render('admins/hostevents/detail', {title: "Not Found",detail: null,actioned:null, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/ });
@@ -260,7 +245,6 @@ console.log("MEEEEEEEEE")
 			} else {
 				if (doc.actioned) {
 				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:false, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/});
-
 				}
 				return res.render('admins/hostevents/detail', {title: doc.title,detail: doc,actionRequired:true, layout: "admin.handlebars"/**,csrfToken: req.csrfToken()**/});
 
