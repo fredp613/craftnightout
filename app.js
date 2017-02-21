@@ -67,7 +67,7 @@ app.use(express.static(path.join(__dirname, 'user_images')));
 //app.use(multer({
 //	dest:"./user_images"
 //}))
-app.use(multer({dest: './user_images'}).single('imgId')); //Beware, you need to match .single() with whatever name="" of your file upload field in html
+app.use(multer({dest: __dirname + '/user_images'}).single('imgId')); //Beware, you need to match .single() with whatever name="" of your file upload field in html
 //app.use(csrfProtection);
 
 
