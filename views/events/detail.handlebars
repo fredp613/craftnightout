@@ -1,11 +1,14 @@
 
-<div class="row" style="margin-top:50px">
+<div class="row" style="margin-top:50px;margin-bottom:50px">
 	<input type="hidden" id="lat" value="{{eventDetail.lat}}" />
 	<input type="hidden" id="lng" value="{{eventDetail.lng}}" />
 	<div class="col-lg-4">
 		<div>
 			<h2>{{eventDetail.title}}</h2>
 		</div>
+		{{#if eventDetail.imgId}}
+			<img src="../{{eventDetail.imgId}}" class="img-responsive">
+		{{/if}}
 		<div>
 			<h3><span class="evtDate">{{eventDetail.eventDate}}</span> - {{eventDetail.eventStartTime}} to {{eventDetail.eventEndTime}} </h3>
 		</div>
@@ -33,12 +36,9 @@
 				</div>
 			{{/if}}
 		</div>
-		<div>
-			
-		</div>
 	</div>
 	<div class="col-lg-8">
-		<div id="map" style="height:800px"></div>
+		<div id="map" style="height:1000px"></div>
 	</div>
 </div>
 

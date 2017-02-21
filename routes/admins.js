@@ -202,7 +202,8 @@ router.get('/evts/:id', (req, res) => {
 
 router.get('/subscribers', (req, res)=> {
 	Subscriber.find({}, (err, docs)=>{
-	res.render('admins/subscribers', { title: 'Subscribers Admin Area', subscribers: docs, layout: "admin.handlebars"});
+		let subCount = docs.length;
+		res.render('admins/subscribers', { title: 'Subscribers Admin Area', subscribers: docs,totalSubs:subCount, layout: "admin.handlebars"});
 	})
 
 });
