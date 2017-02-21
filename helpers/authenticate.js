@@ -21,8 +21,6 @@ export default function isAuthenticated(mongoose, customOpenPaths, rootPath) {
 				let decoded = jwt.verify(token, 'superSecret');
 				let requestingIP = req.headers['x-forwarded-for']; 
 				let decodedIPs = decoded.IPs;
-				console.log(decodedIPs)
-				console.log(requestingIP);
 				if (decodedIPs.indexOf(requestingIP) !== -1) {
 					req.isAuthenticated = true;
 					next();
