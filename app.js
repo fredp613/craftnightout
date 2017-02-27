@@ -68,13 +68,9 @@ app.use(express.static(path.join(__dirname, 'user_images')));
 const crypto = require('crypto');
 let storage = multer.diskStorage({
 	destination: function(req,file,cb) {
-		cb(null,'./user_images');
+		cb(null, __dirname +'/user_images');
 	},
 	filename: function(req, file, cb) {
-		console.log("fred");
-		console.log(file.fieldname);
-		console.log(file);
-		console.log(path.extname(file.originalname));
 		crypto.pseudoRandomBytes(16,function(err,raw) {
 			if (err) return cb(err);
 			cb(null, raw.toString('hex') + path.extname(file.originalname));

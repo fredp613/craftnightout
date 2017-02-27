@@ -18,7 +18,11 @@
 				class="form-control input-lg" name="phone"  value={{detail.phone}}  /><hr>
 Number of Guests<input type="number" id="txtNumGuests" class="form-control input-lg" placeholder="Estimated Number of Guests" name="guests"  value={{detail.guests}} /><hr>
 		Type<input type="text" class="form-control input-lg" id="txtType"  name="type" value={{detail.type}} /><hr>
-		Comments<textarea id="txtComments" class="form-control input-lg"  name="comments" rows=6>{{detail.comments}}</textarea><hr>
+		Comments<textarea style="display:none;" id="txtComments" class="form-control input-lg"  name="comments" rows=6>
+			{{detail.comments}}</textarea>
+		<blockquote>
+			{{detail.comments}}
+		</blockquote>
 	</div>
     {{#if actionRequired}}	
 	<input type="submit" id="btnSubmit"  class="btn btn-success" 
