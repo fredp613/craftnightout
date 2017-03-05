@@ -27,6 +27,18 @@ const CraftEvent = new mongoose.Schema({
 	lat: Number,
 	lng: Number
 });
+CraftEvent.post('find', (result)=>{
+	result.forEach((r)=>{
+		if (r.description.length > 280) {
+			r.description = r.description.substring(0,265) + "...";
+			r.ellipsys = true;
+		} 
+		console.log(r.description);
+	});
+	return result;
+});
+
+
 CraftEvent.post('findOne', (result)=> {
 	let formattedDate = moment(result.eventDate).format("YYYY-MM-DD");
 	result.eventDate = formattedDate;

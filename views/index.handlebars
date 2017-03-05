@@ -137,10 +137,15 @@
 							</a>
 								<strong style="font-size:20px">Event type: {{eventType}} </strong>
 							<h4>Hosted By: {{hostedBy}} </h4>
-							<div style="max-height:140px;text-overflow:ellipsis;overflow-y:scroll">
+							<div style="max-height:140px;">
 							{{#if description}}
 							<blockquote>
 								{{description}}
+								{{#if ellipsys}}
+									<strong>
+										<a href="/events/{{_id}}" style="font-style:oblique">view more</a>
+									</strong>
+								{{/if}}
 							</blockquote>
 							{{/if}}
 							</div>
