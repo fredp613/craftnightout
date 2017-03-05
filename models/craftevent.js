@@ -33,7 +33,6 @@ CraftEvent.post('find', (result)=>{
 			r.description = r.description.substring(0,265) + "...";
 			r.ellipsys = true;
 		} 
-		console.log(r.description);
 	});
 	return result;
 });

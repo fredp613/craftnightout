@@ -8,9 +8,9 @@ import { sendEmail } from '../helpers/email';
 import authenticated from '../helpers/authenticate';
 
 export default function (router, mongoose,customOpenPaths,rootPath) {
-	if (router.get('env') != "development") {      
+//	if (router.get('env') != "development") {      
     	router.use(authenticated(mongoose, customOpenPaths, rootPath));
-	}
+//	}
     //router.use(function() {console.log("my middleware --------------")});	
 	//let User = UserModel(mongoose);
 	//let User = UserModel();
