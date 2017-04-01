@@ -113,9 +113,12 @@ router.post('/evts/create', (req, res) => {
 //EDIT  EVENT
 router.get('/evts/edit/:id', (req, res) => {
 	CraftEvent.findOne({_id:req.params.id}, (err, doc) => {
-		let isoDate = doc.eventDate.toISOString();
-		let utcDate = new Date(doc.eventDate.getUTCFullYear(),doc.eventDate.getUTCMonth(),doc.eventDate.getUTCDate());
-		let formattedDate = moment(utcDate).format("YYYY-MM-DD");
+		let formattedDate = Date();
+		if (doc.eventDate) {
+			let isoDate = doc.eventDate.toISOString();
+			let utcDate = new Date(doc.eventDate.getUTCFullYear(),doc.eventDate.getUTCMonth(),doc.eventDate.getUTCDate());
+			formattedDate = moment(utcDate).format("YYYY-MM-DD");
+		}
 
 		if (err) {
 			res.render('/evts',{
@@ -235,7 +238,14 @@ router.get('/staging', (req, res) => {
 
 router.get('/hostevents', (req, res)=> {
 	HostEvent.find({}, (err, docs)=>{
-		res.render('admins/hostevents/index', { title: 'Host events Admin Area', hostevents: docs, layout: "admin.handlebars"});
+		let newDocs = docs.map((d)=>{
+			let newDateCreated = moment(d.createdOn).format("YYYY-MM-DD");
+			let newDateActioned = moment(d.actionedOn).format("YYYY-MM-DD");
+			d.newDateCreated = newDateCreated;
+			d.newDateActioned = newDateActioned;
+			return d;
+		});
+		res.render('admins/hostevents/index', { title: 'Host events Admin Area', hostevents:newDocs, layout: "admin.handlebars"});
 	})
 
 });

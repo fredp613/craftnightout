@@ -32,13 +32,21 @@
 						{{/if}}
 						<td><a href="/admins/hostevents/{{_id}}" >{{email}}</a></td>
 						<td><a href="/admins/hostevents/{{_id}}" >{{type}}</a></td>
-						<td><a href="/admins/hostevents/{{_id}}" >{{createdOn}}</a></td>
+						{{#if newDateCreated}}
+							<td><a href="/admins/hostevents/{{_id}}" >{{newDateCreated}}</a></td>
+						{{else}}
+							<td><a href="/admins/hostevents/{{_id}}" >{{createdOn}}</a></td>
+						{{/if}}
 						{{#if actioned}}
 						<td><a href="/admins/hostevents/{{_id}}" >Yes</a></td>
 						{{else}}
 						<td><a href="/admins/hostevents/{{_id}}" >No</a></td>
 						{{/if}}
-						<td><a href="/admins/hostevents/{{_id}}" >{{actionedOn}}</a></td>
+						{{#if newDateActioned}}
+							<td><a href="/admins/hostevents/{{_id}}" >{{newDateActioned}}</a></td>
+						{{else}}
+							<td><a href="/admins/hostevents/{{_id}}" >{{actionedOn}}</a></td>
+						{{/if}}
 		
 						<td><a href="/admins/hostevents/{{_id}}" class="btn btn-info" >View Details</a></td>
 				</tr>
